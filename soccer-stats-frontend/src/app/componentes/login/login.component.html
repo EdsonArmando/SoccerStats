@@ -1,0 +1,95 @@
+<div class="example-container">
+
+
+  <mat-toolbar color="" class="example-toolbar">
+    <h2 class="example-app-name" id="title">Soccer Stats</h2>
+    <span class="example-spacer"></span>
+
+    <button (click)="routlogin()" style="margin-right: -0.5%; color: azure; background-color: rgb(59, 59, 59);"
+      mat-icon-button matTooltip="Login" id="button1" class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon">
+      <mat-icon style="color: azure;">account_circle</mat-icon>
+    </button>
+    <button (click)="routregister()" style="margin-right: -0.5%;color: azure; background-color: rgb(59, 59, 59);"
+      mat-icon-button matTooltip="Register" id="button1" class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon">
+      <mat-icon style="color: azure;">how_to_reg</mat-icon>
+    </button>
+    <button style="margin-right: 0.5%;color: azure; background-color: rgb(59, 59, 59);" mat-icon-button
+      matTooltip="Home" id="button1" class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon">
+      <mat-icon style="color: azure;">home</mat-icon>
+    </button>
+
+  </mat-toolbar>
+
+  <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+    <mat-card width="100%" id="card">
+      <h1>
+        <mat-icon aria-hidden="false" aria-label="Example home icon">account_circle</mat-icon> Sign in
+      </h1>
+    </mat-card>
+    <br>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>IP_ESB</mat-label>
+        <mat-select  [(ngModel)]="ipESB">
+          <mat-option value="http://motomami/" >
+            Grupo A
+          </mat-option>
+          <mat-option value="http://35.226.118.223:3000/esb/" >
+            Grupo B 35.226.118.223:3000
+          </mat-option>
+          <mat-option value="http://34.132.88.81:7050/esb/" >
+            Grupo C 34.132.88.81:7050
+          </mat-option>
+          <mat-option value="http://104.198.130.96:3000/esb/" >
+            Grupo D 104.198.130.96:3000
+          </mat-option>
+          <mat-option value="http://104.198.130.96:3000/esb/" >
+            Grupo E 104.198.130.96:3000
+          </mat-option>
+          <mat-option value="http://34.71.127.255:80/esb/" >
+            Grupo F 34.71.127.255:80
+          </mat-option>
+          <mat-option value="http://34.125.61.119:3000/esb/" >
+            Grupo G 34.125.61.119:3000
+          </mat-option>
+          <mat-option value="http://34.132.139.69:5000/esb/" >
+            Grupo H 34.132.139.69:5000
+          </mat-option>
+          <mat-option value="http://34.125.81.45:3000/esb/" >
+            Grupo I 34.125.81.45:3000
+          </mat-option>
+          <mat-option value="http://3.15.227.171:3000/esb/" >
+            Grupo J 3.15.227.171:3000
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    <br>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label id="inputmat1">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">alternate_email</mat-icon> Enter your email
+      </mat-label>
+      <input id="inputmat" matInput [(ngModel)]="user" name="correo" placeholder="juanperez">
+    </mat-form-field>
+
+    <br>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label id="inputmat1">Enter your password</mat-label>
+      <input matInput id="inputmat" [(ngModel)]="contra" name="contra" [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <br>
+    <u (click)="fogotpassword()" id="msg">¿Olvidaste tu contraseña?</u>
+    <br>
+    <br>
+    <button (click)="login()" mat-raised-button color="primary" class="btn btn-primary btn-lg btn-block mt-3" type="submit">LOGIN</button>
+    <br>
+    <br>
+  </mat-card>
+
+</div>

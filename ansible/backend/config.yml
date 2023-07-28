@@ -1,0 +1,24 @@
+- hosts: backend
+  become: yes
+  tasks:
+    - name: "apt-get update"
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install Python
+      package:
+        name: "python3"
+        state: present
+
+    - name: install pip3
+      apt: name=python3-pip state=present
+
+    - name: Install Docker sdk for python
+      pip:
+        name: docker
+
+    - name: Start Docker service
+      service:
+        name: "docker"
+        state: started    

@@ -1,0 +1,12 @@
+FROM node:14 as build
+WORKDIR /usr/local/app
+COPY package*.json ./ 
+ENV PORT=3000
+ENV BASE_URL=http://34.66.73.87
+ENV AUTH_PORT=5003
+ENV CUSTOMER_PORT=5000
+ENV ADMINISTRATOR_PORT=5002
+RUN npm install
+COPY ./ ./
+EXPOSE 3000
+CMD ["node", "index.js"]

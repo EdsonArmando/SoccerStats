@@ -1,0 +1,179 @@
+@media only screen and (max-width: 600px) {
+    .container#title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #37ee99;
+      font-size: 20px;
+      font-family: 'Times New Roman', Times, serif;
+      font-style: italic;
+      font-weight: bold;
+      text-shadow: -1px -1px 1px rgb(48, 48, 48),
+               0px 4px 1px rgba(100, 100, 100, 0.5),
+               4px 4px 5px rgba(78, 78, 78, 0.7),
+               0px 0px 7px rgba(53, 53, 53, 0.4)
+    }
+  }
+  
+  .example-container {
+      display:flex;
+      flex-direction: column;
+      position:absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      font-family: "Century Gothic";
+    }
+    
+    .example-is-mobile .example-toolbar {
+       
+      /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+      z-index: 2;
+      text-align: center;
+      flex: 1 1 auto;
+    }
+    .example-toolbar {
+      background-color: #000000; /*bara*/
+    }
+  
+    .container {
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #37ee99;
+      font-size: 40px;
+      font-family: 'Times New Roman', Times, serif;
+      font-style: italic;
+      font-weight: bold;
+      text-shadow: -1px -1px 1px rgb(48, 48, 48),
+               0px 4px 1px rgba(100, 100, 100, 0.5),
+               4px 4px 5px rgba(78, 78, 78, 0.7),
+               0px 0px 7px rgba(53, 53, 53, 0.4)
+  }
+  
+  .item {
+      width: 10em;
+  }
+    div.example-app-name {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #b32038;
+      text-align: center;
+      position: center;
+      font-size: 110%;
+      font-family: 'Times New Roman', Times, serif;
+      font-style: italic;
+      font-weight: bold;
+      text-shadow: -1px -1px 1px rgb(51, 17, 17),
+               0px 4px 1px rgba(0,0,0,0.5),
+               4px 4px 5px rgba(0,0,0,0.7),
+               0px 0px 7px rgba(240, 238, 238, 0.4);
+    }
+      .matsnv {
+      background-color: #aeadfa;
+      color: #f9faf7;
+    }
+    #btn {
+      background-color: #000000;
+      border: none;
+      text-decoration: none;
+      width: 100px;
+      height: 100%;
+      background-image: url("../../../../assets/minwith.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    #btn1 {
+      border-radius: 0px;
+      background-image: url("../../../../assets/profile-svgrepo-com.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 30px;
+      height: 30px;
+    }
+    #btn2 {
+      border-radius: 0px;
+      background-image: url("../../../../assets/newspaper-svgrepo-com.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 40px;
+      height: 40px;
+    }
+    #btn3 {
+      border-radius: 0px;
+      background-image: url("../../../../assets/soccer-svgrepo-com.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 40px;
+      height: 40px;
+    }
+    #member {
+      border-radius: 0px;
+      background-image: url("../../../../assets/diamond-svgrepo-com.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 40px;
+      height: 40px;
+    }
+    .example-sidenav-container {
+      /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+             causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+      flex: 1;
+      background: #5d5dbb;
+      color: #000000;
+      background-size: 100%;
+      background-image: url("../../../../assets/fondo1.png");
+    }
+    
+    .example-is-mobile .example-sidenav-container {
+      /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+             `<body>` to be our scrolling element for mobile layouts. */
+      flex: 1 0 auto;
+      width: 10px;
+      color: #000000;
+    }
+    
+    .icono {
+      margin-right: 10%;
+      color: #000000;
+    }
+  
+    #button1{
+      margin-right: 2%;
+      margin-left: 20px;
+    }
+  
+    .example-spacer {
+      flex: 1 1 auto;
+    }
+  
+    #imgRedonda {
+      width:40px;
+      height:40px;
+      border-radius:150px;
+      margin-right: -0.9%;
+    }
+  
+
+    @media screen  and (max-width: 400px) {
+        img {
+            width:40px;
+            height:40px;
+            border-radius:150px;
+            margin-right: -1.9%;
+          }
+        
+    }
+    @media only screen and (max-width: 600px) {
+        img {
+            width:40px;
+            height:40px;
+            border-radius:150px;
+            margin-right: -1.9%;
+          }
+    
+    }
+    

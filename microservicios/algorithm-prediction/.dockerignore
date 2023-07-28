@@ -1,0 +1,17 @@
+**/node_modules
+node_modules
+
+usuario/node_modules
+microservicios/usuario/node_modules
+
+administrador/node_modules
+microservicios/administrador/node_modules
+
+algorithm-prediction/node_modules
+microservicios/algorithm-prediction/node_modules
+
+cliente/node_modules
+microservicios/cliente/node_modules
+
+empleado/node_modules
+microservicios/empleado/node_modules

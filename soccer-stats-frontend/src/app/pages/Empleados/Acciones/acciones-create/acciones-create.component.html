@@ -1,0 +1,103 @@
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Transferencia de jugador
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Jugador</mat-label>
+              <mat-select  [(ngModel)]="id_player">
+                <mat-option *ngFor="let ciudad of allJugadores" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Equipo Origen</mat-label>
+              <mat-select  [(ngModel)]="id_team_origin">
+                <mat-option *ngFor="let ciudad of equipos" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Equipo Destino</mat-label>
+              <mat-select  [(ngModel)]="id_team_destination">
+                <mat-option *ngFor="let ciudad of equipos" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="realizarTransferencia()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>Transferir Jugador
+        </button>
+      </mat-card>
+    </div>
+  </div>
+</div>
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Transferencia de Tecnico
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Tecnico</mat-label>
+              <mat-select  [(ngModel)]="id_coach">
+                <mat-option *ngFor="let ciudad of allTecnicos" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Equipo Origen</mat-label>
+              <mat-select  [(ngModel)]="id_team_origin2">
+                <mat-option *ngFor="let ciudad of equipos" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Equipo Destino</mat-label>
+              <mat-select  [(ngModel)]="id_team_destination2">
+                <mat-option *ngFor="let ciudad of equipos" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="realizarTransferenciaTecnico()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>Transferir Tecnico
+        </button>
+      </mat-card>
+    </div>
+  </div>
+</div>
+

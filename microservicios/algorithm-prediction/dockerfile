@@ -1,0 +1,9 @@
+FROM node:14 as build
+WORKDIR /usr/local/app
+COPY algorithm-prediction/package*.json ./ 
+RUN npm install
+COPY algorithm-prediction/src ./src
+COPY algorithm-prediction/ ./
+COPY database/  database/
+EXPOSE 3800
+CMD ["npm", "start"]

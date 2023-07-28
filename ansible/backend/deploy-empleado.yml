@@ -1,0 +1,23 @@
+- hosts: backend
+  become: yes
+  tasks:
+    - name: "delete-empleado-container"
+      docker_container:
+        name: empleado
+        state: absent
+
+    - name: "Remove empleado image"
+      docker_image:
+        state: absent
+        name: blocnotas/empleado
+        tag: lts
+
+    - name: "deploy-empleado"
+      docker_container:
+        name: empleado
+        image: blocnotas/empleado:lts
+        state: started
+        exposed_ports:
+          - "5001:5001"
+        ports: 
+          - "5001:5001"

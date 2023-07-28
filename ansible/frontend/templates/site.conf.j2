@@ -1,0 +1,9 @@
+server {
+  listen 4200;
+  listen [::]:4200;
+  server_name 35.239.131.136;
+  root /var/www/;
+  location / {    
+    try_files $uri $uri/ /index.html =404;
+  }
+} 

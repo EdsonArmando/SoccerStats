@@ -1,0 +1,103 @@
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Ingresar Partido
+          </h1>
+        </mat-card>
+        <br>
+
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field appearance="fill" class="example-full-width">
+              <mat-label id="inputmat1">game_date</mat-label>
+              <input matInput [matDatepicker]="datepicker" [(ngModel)]="game_date">
+              <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker>
+                <mat-datepicker-actions>
+                  <button mat-button matDatepickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+              </mat-datepicker>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label id="inputmat1">attendees</mat-label>
+              <input matInput [(ngModel)]="attendees" id="inputmat" name="title" placeholder="Ingrese attendees"
+                     required>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label id="inputmat1">result_local</mat-label>
+              <input matInput [(ngModel)]="result_local" id="inputmat" name="description" placeholder="Ingrese result_local"
+                     required>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label id="inputmat1">result_visiting</mat-label>
+              <input matInput [(ngModel)]="result_visiting" id="inputmat" name="description" placeholder="Ingrese result_visiting"
+                     required>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label id="inputmat1">state</mat-label>
+              <input matInput [(ngModel)]="state" id="inputmat" name="description" placeholder="Ingrese Estado"
+                     required>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Ciudad</mat-label>
+              <mat-select  [(ngModel)]="idStadium">
+                <mat-option *ngFor="let ciudad of estadios" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Equipo Local</mat-label>
+              <mat-select  [(ngModel)]="idTeamLocal">
+                <mat-option *ngFor="let ciudad of equipos" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Equipo Visita</mat-label>
+              <mat-select  [(ngModel)]="idTeamVisiting">
+                <mat-option *ngFor="let ciudad of equipos" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Torneo</mat-label>
+              <mat-select  [(ngModel)]="idCompetition">
+                <mat-option *ngFor="let ciudad of competiciones" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Register()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>Ingresar Partido
+        </button>
+      </mat-card>
+    </div>
+  </div>
+</div>

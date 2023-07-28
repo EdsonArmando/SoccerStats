@@ -1,0 +1,23 @@
+<div class="contenedor">
+    <br>
+    <h1 id="noti">Noticias</h1>
+    <div class="boton">
+        <button class="mat-raised-button" routerLink="/pages/empleado/create"
+                type="submit">CrearNoticia</button>
+    </div>
+    <mat-grid-list cols="1" rowHeight="200px">
+        <mat-grid-tile *ngFor="let pub of allNew;let i=index;">
+            <mat-card id="card3">
+
+                <h1 class="title">{{pub.title}}</h1>
+
+                <h1 class="date">{{pub.date}}</h1>
+
+
+                <mat-card class="example-full-width">
+                    <h5>{{pub.description}}</h5>
+                </mat-card>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

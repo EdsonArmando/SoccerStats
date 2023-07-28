@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="boton">
+    <button class="mat-raised-button" routerLink="/pages/empleado/createIncidencia"
+            type="submit">CrearIncidencia</button>
+  </div>
+  <h1>
+    Incidencias
+  </h1>
+  <table class="table table-striped table-dark">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">id_game</th>
+      <th scope="col">id_player</th>
+      <th scope="col">id_team</th>
+      <th scope="col">descripcion</th>
+      <th scope="col">minuto</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let team of incidencias;let indexOfelement=index;">
+      <td>{{indexOfelement}}</td>
+      <td>{{team.id_game}}</td>
+      <td>{{team.id_player}}</td>
+      <td>{{team.id_team}}</td>
+      <td>{{team.descripcion}}</td>
+      <td>{{team.minuto}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

@@ -1,0 +1,61 @@
+<br>
+<mat-form-field class="example-full-width" appearance="fill">
+    <mat-label style="color: #14ccb3;">
+        <mat-icon matTooltip="Buscar">search</mat-icon>Buscar
+    </mat-label>
+    <input class="ng-pristine ng-invalid ng-invalid-required ng-touched" matInput (keyup)="filtrar($event)"
+        placeholder="Busca cualquier palabra">
+</mat-form-field>
+<div class="contenedor">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+            <th mat-header-cell style="text-align: left;" *matHeaderCellDef> No. </th>
+            <td mat-cell style="width: 4%;" *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Nombre </th>
+            <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="date">
+            <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Fecha </th>
+            <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element"> {{element.game_date}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="attendees">
+            <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Asientos </th>
+            <td mat-cell style="width: 15%; text-align: center;" *matCellDef="let element"> {{element.attendees}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="local">
+            <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Local </th>
+            <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element"> {{element.local}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="visiting">
+            <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Visitantes </th>
+            <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element"> {{element.visiting}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="resultado">
+            <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Resultado </th>
+            <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                {{element.result_local}}-{{element.result_visiting}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

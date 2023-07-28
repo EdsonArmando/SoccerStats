@@ -1,0 +1,23 @@
+- hosts: backend
+  become: yes
+  tasks:
+    - name: "delete-administrador-container"
+      docker_container:
+        name: administrador
+        state: absent
+
+    - name: "Remove administrador image"
+      docker_image:
+        state: absent
+        name: blocnotas/administrador
+        tag: lts
+
+    - name: "deploy-administrador"
+      docker_container:
+        name: administrador
+        image: blocnotas/administrador:lts
+        state: started
+        exposed_ports:
+          - "5002:5002"
+        ports: 
+          - "5002:5002"

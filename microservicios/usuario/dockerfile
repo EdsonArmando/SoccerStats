@@ -1,0 +1,9 @@
+FROM node:14 as build
+WORKDIR /usr/local/app
+COPY usuario/package*.json ./ 
+ENV PORT=5003
+RUN npm install
+COPY usuario/ usuario/
+COPY database/  database/
+EXPOSE 5003
+CMD ["node", "usuario/server.js"]

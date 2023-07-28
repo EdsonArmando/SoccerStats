@@ -1,0 +1,23 @@
+- hosts: backend
+  become: yes
+  tasks:
+    - name: "delete-files-container"
+      docker_container:
+        name: files
+        state: absent
+
+    - name: "Remove files image"
+      docker_image:
+        state: absent
+        name: blocnotas/files
+        tag: lts
+
+    - name: "deploy-files"
+      docker_container:
+        name: files
+        image: blocnotas/files:lts
+        state: started
+        exposed_ports:
+          - "3005:3005"
+        ports: 
+          - "3005:3005"

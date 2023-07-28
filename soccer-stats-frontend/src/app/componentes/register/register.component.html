@@ -1,0 +1,149 @@
+<div class="example-container">
+
+
+  <mat-toolbar color="" class="example-toolbar">
+    <h2 class="example-app-name" id="title">Soccer Stats</h2>
+    <span class="example-spacer"></span>
+
+    <button (click)="routlogin()" style="margin-right: 0.8%; color: azure; background-color: rgb(59, 59, 59);"
+      mat-icon-button matTooltip="Login" id="button1" class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon">
+      <mat-icon style="color: azure;">account_circle</mat-icon>
+    </button>
+    <button (click)="routregister()" style="margin-right: 0.8%;color: azure; background-color: rgb(59, 59, 59);"
+      mat-icon-button matTooltip="Register" id="button1" class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon">
+      <mat-icon style="color: azure;">how_to_reg</mat-icon>
+    </button>
+    <button (click)="routInicio()" style="margin-right: 0.5%;color: azure; background-color: rgb(59, 59, 59);"
+      mat-icon-button matTooltip="Home" id="button1" class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon">
+      <mat-icon style="color: azure;">home</mat-icon>
+    </button>
+
+  </mat-toolbar>
+  <div class="contenedor">
+    <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+      <mat-card width="100%" id="card">
+        <h1 id="textalig">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">people_outline</mat-icon> Registro
+        </h1>
+      </mat-card>
+      <mat-grid-list id="gridcolor" cols="2" rowHeight="10rem">
+        <br>
+
+        <input type="file" class="d-done" (change)="onFileChanged($event)" #photoInput hidden>
+        <img id='imgRedonda' style="object-fit:cover" [src]="photoSelected || 'assets/sinFoto.png'"
+          (click)="photoInput.click()" class="img-fluid" alt="no image" width="250" height="250">
+
+
+
+      </mat-grid-list>
+      <br>
+      <br><br><br>
+      <mat-grid-list id="tables" cols="2" rowHeight="7rem">
+        <mat-grid-tile>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label id="inputmat1">Nombre</mat-label>
+            <input matInput [(ngModel)]="nombre" id="inputmat" name="nombre" placeholder="Ingrese su nombre" required>
+            <mat-error *ngIf="firstname.invalid">{{getErrorMessageother()}}</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label id="inputmat1">Apellido</mat-label>
+            <input matInput [(ngModel)]="apellido" id="inputmat" name="apellido" placeholder="Ingrese su apellido"
+              required>
+            <mat-error *ngIf="lastname.invalid">{{getErrorMessageother()}}</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label id="inputmat1">Teléfono</mat-label>
+            <input id="inputmat" matInput [(ngModel)]="phone" name="phone" placeholder="Ingrese su teléfono" required>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label id="inputmat1">Correo electrónico</mat-label>
+            <input id="inputmat" matInput [(ngModel)]="correo" name="correo" placeholder="example@example.com" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field appearance="fill" class="example-full-width">
+            <mat-label id="inputmat1">Fecha de nacimiento</mat-label>
+            <input matInput [matDatepicker]="datepicker" [(ngModel)]="nacimiento">
+            <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+            <mat-datepicker #datepicker>
+              <mat-datepicker-actions>
+                <button mat-button matDatepickerCancel>Cancel</button>
+                <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+              </mat-datepicker-actions>
+            </mat-datepicker>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label id="inputmat1">Género</mat-label>
+            <mat-select [(value)]="selected2">
+              <mat-option *ngFor="let food of gender" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label id="inputmat1">Contraseña</mat-label>
+            <input matInput #input maxlength="9" id="inputmat" [(ngModel)]="contra" name="contra"
+              [type]="hide ? 'password' : 'text'" required>
+            <mat-hint align="end">{{input.value?.length || 0}}/9</mat-hint>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label id="inputmat1">Confirmar Contraseña</mat-label>
+            <input matInput #input maxlength="9" id="inputmat" [(ngModel)]="password" name="password"
+              [type]="hide1 ? 'password' : 'text'" required>
+            <mat-hint align="end">{{input.value?.length || 0}}/9</mat-hint>
+            <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide1">
+              <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label id="inputmat1">País</mat-label>
+            <mat-select [(value)]="selected3">
+              <mat-option *ngFor="let food of country" [value]="food.nicename">
+                {{food.nicename}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          
+          <mat-slide-toggle [(ngModel)]="isChecked">Membresía </mat-slide-toggle><div id="btn1"></div>
+        </mat-grid-tile>
+
+      </mat-grid-list>
+
+      <br>
+
+      <br>
+      <button mat-raised-button (click)="Register()" id="espacio" color="primary"
+        class="btn btn-outline-success my-2 my-sm-0" type="submit">REGISTRARSE</button>
+      <button mat-raised-button (click)="redirigir()" color="accent" class="btn btn-outline-success my-2 my-sm-0"
+        type="submit">LOGIN</button>
+
+
+    </mat-card>
+  </div>
+</div>

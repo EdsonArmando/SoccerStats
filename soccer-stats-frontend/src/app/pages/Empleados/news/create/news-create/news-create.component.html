@@ -1,0 +1,60 @@
+<div class="example-container">
+  <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+          <mat-card width="100%" id="card">
+              <h1 id="textalig">
+                Crear Noticia
+              </h1>
+          </mat-card>
+          <br>
+
+          <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+              <mat-grid-tile>
+                  <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label id="inputmat1">Titulo</mat-label>
+                      <input matInput [(ngModel)]="title" id="inputmat" name="title" placeholder="Ingrese titulo"
+                          required>
+                  </mat-form-field>
+              </mat-grid-tile>
+            <mat-grid-tile>
+              <input type="file" class="d-done" (change)="onFileChanged($event)">
+            </mat-grid-tile>
+              <mat-grid-tile>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label id="inputmat1">Descripcion</mat-label>
+                    <input matInput [(ngModel)]="description" id="inputmat" name="description" placeholder="Ingrese Descripcion"
+                        required>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Equipo</mat-label>
+                <mat-select  [(ngModel)]="idEquipo">
+                  <mat-option *ngFor="let ciudad of equipos" [value]="ciudad.id" >
+                    {{ciudad.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-grid-tile>
+              <mat-grid-tile>
+                  <mat-form-field appearance="fill" class="example-full-width">
+                      <mat-label id="inputmat1">Fecha de Publicacion</mat-label>
+                      <input matInput [matDatepicker]="datepicker" [(ngModel)]="date">
+                      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                      <mat-datepicker #datepicker>
+                          <mat-datepicker-actions>
+                              <button mat-button matDatepickerCancel>Cancel</button>
+                              <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                          </mat-datepicker-actions>
+                      </mat-datepicker>
+                  </mat-form-field>
+              </mat-grid-tile>
+          </mat-grid-list>
+          <br>
+          <button mat-raised-button (click)="Register()" id="espacio" color="primary"
+              class="btn btn-outline-success my-2 my-sm-0" type="submit">
+              <mat-icon>edit</mat-icon>Ingresar Noticia
+          </button>
+      </mat-card>
+  </div>
+</div>

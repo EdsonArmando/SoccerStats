@@ -1,0 +1,295 @@
+#card1{
+    margin-left: 30%;
+    margin-right: 30%;
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: 5%;
+    flex: auto;
+    background-color: rgb(48, 48, 48);
+    -webkit-box-shadow: 2px 3px 5px 0px rgba(236, 233, 233, 0.75);
+    -moz-box-shadow: 2px 3px 5px 0px rgba(104, 100, 100, 0.781);
+    box-shadow: 2px 3px 5px 0px rgba(14, 13, 13, 0.75);
+}
+#textalig{
+  margin-top: -4%;
+}
+
+#btn2 {
+    border-radius: 0px;
+    background-image: url("../../../../assets/people-svgrepo-com.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+  }
+
+#card{
+  text-align: center;
+  font-family: 'Times New Roman';
+  height: 12px;
+  color: #b8fff9;
+  border: 3px double #b8fff9;
+    border-radius: 15px;
+    background-color: rgb(77, 77, 77);
+    -webkit-box-shadow: 2px 3px 5px 0px rgba(236, 233, 233, 0.75);
+    -moz-box-shadow: 2px 3px 5px 0px rgba(104, 100, 100, 0.781);
+    box-shadow: 2px 3px 5px 0px rgba(14, 13, 13, 0.75);
+}
+
+
+
+#boton_1{
+    text-decoration: none;
+    padding: 3px;
+    padding-left: 90px;
+    padding-right: 90px;
+    margin-right: 5px;
+    margin-left: 10px;
+    font-family: 'Times New Roman';
+    font-weight: 700;
+    font-size: 16px;
+    color: #ec8a0a;
+    background-color: rgb(248, 185, 140);
+    border-radius: 15px;
+    border: 3px double #ec8a0a;
+    -webkit-box-shadow: 2px 3px 5px 0px rgba(193, 240, 241, 0.75);
+    -moz-box-shadow: 2px 3px 5px 0px rgba(112, 253, 253, 0.75);
+    box-shadow: 2px 3px 5px 0px rgba(240, 255, 254, 0.75);
+  }
+  #boton_1:hover{
+    opacity: 0.6;
+    text-decoration: none;
+  }
+  
+  #boton_2{
+    text-decoration: none;
+    padding: 3px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: 'Times New Roman';
+    font-weight: 700;
+    font-size: 16px;
+    color: #dd085a;
+    border-radius: 15px;
+    border: 3px double #dd085a;
+    -webkit-box-shadow: 2px 3px 5px 0px rgba(193, 240, 241, 0.75);
+    -moz-box-shadow: 2px 3px 5px 0px rgba(112, 253, 253, 0.75);
+    box-shadow: 2px 3px 5px 0px rgba(240, 255, 254, 0.75);
+  }
+  #boton_2:hover{
+    opacity: 0.6;
+    text-decoration: none;
+  }
+  #espacio{
+    margin-top: 10%;
+  }
+ 
+  
+  #imgRedonda {
+    width:150px;
+    height:150px;
+    border-radius:150px;
+  }
+  #espacio{
+    margin-right: 5%;
+    margin-top: -20%;
+  }
+  
+  #fondo{
+   
+    background-color: green;
+  }
+
+  #inputmat{
+    color: aliceblue;
+}
+#inputmat1{
+  color: rgb(149, 194, 233);
+}
+ 
+#tables{
+  margin-top: 3%;
+}
+  
+  #boton_3{
+    text-decoration: none;
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: 'Times New Roman';
+    font-weight: 700;
+    font-size: 16px;
+    color: #08dddd;
+    border-radius: 15px;
+    border: 3px double #08dddd;
+    -webkit-box-shadow: 2px 3px 5px 0px rgba(193, 240, 241, 0.75);
+    -moz-box-shadow: 2px 3px 5px 0px rgba(112, 253, 253, 0.75);
+    box-shadow: 2px 3px 5px 0px rgba(240, 255, 254, 0.75);
+  }
+  #boton_3:hover{
+    opacity: 0.6;
+    text-decoration: none;
+  }
+  
+  mat-grid-title {
+    object-position: center;
+    padding: center;
+    bottom: center;
+    top: center;
+  }
+
+  .mat-accordion{
+    background-color: rgb(48, 48, 48);
+    color: black;
+    -webkit-box-shadow: 2px 3px 5px 0px rgba(236, 233, 233, 0.75);
+    -moz-box-shadow: 2px 3px 5px 0px rgba(228, 22, 22, 0.781);
+    box-shadow: 2px 3px 5px 0px rgba(241, 26, 26, 0.75);
+  }
+
+  @media screen  and (max-width: 400px) {
+    #title {
+      margin-left: 5%;
+      color: #32f800;
+      font-family: "Century Gothic";
+      font-style: italic;
+      font-weight: bold;
+      text-shadow: -1px -1px 1px rgb(241, 239, 239),
+               0px 4px 1px rgba(0,0,0,0.5),
+               4px 4px 5px rgba(0,0,0,0.7),
+               0px 0px 7px rgba(0,0,0,0.4);
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    #card1{
+      margin-left: 10%;
+      margin-right: 10%;
+      text-align: center;
+      margin-top: 20%;
+      margin-bottom: 50%;
+      flex: auto;
+      background-color: rgb(48, 48, 48);
+      -webkit-box-shadow: 2px 3px 5px 0px rgba(236, 233, 233, 0.75);
+      -moz-box-shadow: 2px 3px 5px 0px rgba(104, 100, 100, 0.781);
+      box-shadow: 2px 3px 5px 0px rgba(14, 13, 13, 0.75);
+    }
+    
+    #title {
+      margin-left: 5%;
+      color: #32f800;
+      font-size: 25px;
+      font-family: "Century Gothic";
+      font-style: italic;
+      font-weight: bold;
+      text-shadow: -1px -1px 1px rgb(241, 239, 239),
+               0px 4px 1px rgba(0,0,0,0.5),
+               4px 4px 5px rgba(0,0,0,0.7),
+               0px 0px 7px rgba(0,0,0,0.4);
+    }
+  }
+  .example-full-width{
+    width: 90%;
+  }
+  .example-container {
+    display:flex;
+    flex-direction: column;
+    position:absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-family: "Century Gothic";
+  }
+  
+  .example-is-mobile .example-toolbar {
+    width: 100%;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+  }
+  .example-toolbar {
+    background-color: #000000; /*bara*/
+    width: 100%;
+  }
+  .example-app-name {
+    margin-left: 40%;
+    color: #32f800;
+    font-size: 55px;
+    font-family: "Century Gothic";
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: -1px -1px 1px rgb(241, 239, 239),
+             0px 4px 1px rgba(0,0,0,0.5),
+             4px 4px 5px rgba(0,0,0,0.7),
+             0px 0px 7px rgba(0,0,0,0.4);
+  }
+  .example-container {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+           causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    
+           flex: 1 1 auto;
+    background-size: 100%;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/003/106/903/non_2x/soccer-football-stadium-background-free-vector.jpg");
+    background-repeat: repeat;
+}
+  
+  .example-is-mobile .example-sidenav-container {
+    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+           `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+    width: 10px;
+  }
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .contenedor {
+    border: transparent;
+    height: 100%;
+    width:100%;
+    background: transparent;
+    overflow:auto;
+    box-sizing: border-box;
+    padding:0 1rem;
+}
+
+/* Estilos para motores Webkit y blink (Chrome, Safari, Opera... )*/
+
+.contenedor::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.contenedor::-webkit-scrollbar:vertical {
+    width:10px;
+}
+
+.contenedor::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    display: none;
+} 
+
+.contenedor::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.contenedor::-webkit-scrollbar-thumb {
+    background-color: #383838;
+    border-radius: 20px;
+    border: 1px solid #f1f2f3;
+}
+
+.contenedor::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
+
+#btn1 {
+  border-radius: 0px;
+  background-image: url("../../../../assets/diamond-svgrepo-com.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+}
+
+mat-slide-toggle {
+  text-align: center;
+}

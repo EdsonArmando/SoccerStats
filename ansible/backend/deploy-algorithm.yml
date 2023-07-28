@@ -1,0 +1,23 @@
+- hosts: backend
+  become: yes
+  tasks:
+    - name: "delete-prediction-container"
+      docker_container:
+        name: prediction
+        state: absent
+
+    - name: "Remove prediction image"
+      docker_image:
+        state: absent
+        name: blocnotas/prediction
+        tag: lts
+
+    - name: "deploy-prediction"
+      docker_container:
+        name: prediction
+        image: blocnotas/prediction:lts
+        state: started
+        exposed_ports:
+          - "8083:8083"
+        ports: 
+          - "8083:8083"

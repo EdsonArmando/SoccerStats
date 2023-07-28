@@ -1,0 +1,272 @@
+pipeline {
+  agent any
+
+  tools{
+    nodejs 'node'
+  }
+
+  stages {
+    stage('get-changes'){
+      steps {
+        git branch: 'develop', url: 'https://oauth2:glpat-xi8ExWwQh5mndLzQPKAR@gitlab.com/LuisArana631/soccer-stats-proyecto-sa.git'
+      }
+    }
+
+    stage('build-backend') {
+      when {
+        changeset '**/microservicios/**'
+      }
+      steps {
+        dir('microservicios/administrador'){
+          sh 'ls'
+          sh 'npm install'
+        }
+        dir('microservicios/algorithm-prediction'){
+          sh 'ls'
+          sh 'npm install'
+        }
+        dir('microservicios/cliente'){
+          sh 'ls'
+          sh 'npm install'
+        }
+        dir('microservicios/database'){
+          sh 'ls'
+          sh 'npm install'
+        }
+        dir('microservicios/empleado'){
+          sh 'ls'
+          sh 'npm install'
+        }
+        dir('microservicios/usuario'){
+          sh 'ls'
+          sh 'npm install'
+        }
+      }
+    }
+
+    stage('test-backend') {
+      when {
+        changeset '**/microservicios/**'
+      }
+      steps {
+        dir('microservicios/administrador'){
+          sh 'ls'
+          sh 'npm test'
+        }
+        dir('microservicios/usuario'){
+          sh 'ls'
+          sh 'npm test'
+        }
+        dir('microservicios/cliente'){
+          sh 'ls'
+          sh 'npm test'
+        }
+      }
+    }
+
+    stage('config-backend-server') {
+      when {
+        changeset '**/microservicios/**'
+      }
+      steps {
+        ansiblePlaybook credentialsId: 'gcp-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'ansible/backend/inventory.inv', playbook: 'ansible/backend/config.yml'
+      }
+    }
+
+    stage('deploy-admin'){
+      when {
+        changeset '**/microservicios/administrador/**'
+      }
+      steps {
+        sh 'docker login -u blocnotas -p Fernando/2014@'
+        dir('microservicios/administrador'){
+          script {
+            try {
+              sh 'docker rmi blocnotas/administrador:lts'
+            } catch (Exception e) {
+              echo 'Exception occurred: ' + e.toString()
+            }
+          }
+        }
+        dir('microservicios'){
+          // Administrador
+          sh 'docker build -t blocnotas/administrador:lts -f administrador/dockerfile .'
+          sh 'docker push blocnotas/administrador:lts'
+        }
+        ansiblePlaybook credentialsId: 'gcp-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'ansible/backend/inventory.inv', playbook: 'ansible/backend/deploy-admin.yml'
+      }
+    }
+
+    stage('deploy-algorithm') {
+      when {
+        changeset '**/microservicios/algorithm-prediction/**'
+      }
+      steps {
+        dir('microservicios/algorithm-prediction'){
+          script {
+            try {
+              sh 'docker rmi blocnotas/prediction:lts'
+            } catch (Exception e) {
+              echo 'Exception occurred: ' + e.toString()
+            }
+          }
+        }
+        dir('microservicios'){          
+          // Prediction
+          sh 'docker build -t blocnotas/prediction:lts -f algorithm-prediction/dockerfile .'
+          sh 'docker push blocnotas/prediction:lts'
+        }
+        ansiblePlaybook credentialsId: 'gcp-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'ansible/backend/inventory.inv', playbook: 'ansible/backend/deploy-algorithm.yml'
+      }
+    }
+
+    stage('deploy-cliente') {
+      when {
+        changeset '**/microservicios/cliente/**'
+      }
+      steps {
+        dir('microservicios/cliente'){
+          script {
+            try {
+              sh 'docker rmi blocnotas/cliente:lts'
+            } catch (Exception e) {
+              echo 'Exception occurred: ' + e.toString()
+            }
+          }
+        }
+        dir('microservicios'){          
+          // Cliente
+          sh 'docker build -t blocnotas/cliente:lts -f cliente/dockerfile .'
+          sh 'docker push blocnotas/cliente:lts'
+        } 
+        ansiblePlaybook credentialsId: 'gcp-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'ansible/backend/inventory.inv', playbook: 'ansible/backend/deploy-cliente.yml'
+      }
+    }
+
+    stage('deploy-empleado') {
+      when {
+        changeset '**/microservicios/empleado/**'
+      }
+      steps {
+        dir('microservicios/empleado'){          
+          script {
+            try {
+              sh 'docker rmi blocnotas/empleado:lts'
+            } catch (Exception e) {
+              echo 'Exception occurred: ' + e.toString()
+            }
+          }          
+        }
+        dir('microservicios'){          
+            // Empleado
+            sh 'docker build -t blocnotas/empleado:lts -f empleado/dockerfile .'
+            sh 'docker push blocnotas/empleado:lts'
+        }
+        ansiblePlaybook credentialsId: 'gcp-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'ansible/backend/inventory.inv', playbook: 'ansible/backend/deploy-empleado.yml'
+      }
+    }
+
+    stage('deploy-usuario') {
+      when {
+        changeset '**/microservicios/usuario/**'
+      }
+      steps {
+        dir('microservicios/usuario'){
+          script {
+            try {
+              sh 'docker rmi blocnotas/usuario:lts'
+            } catch (Exception e) {
+              echo 'Exception occurred: ' + e.toString()
+            }
+          }          
+        }
+        dir('microservicios'){          
+            // Usuario
+            sh 'docker build -t blocnotas/usuario:lts -f usuario/dockerfile .'
+            sh 'docker push blocnotas/usuario:lts'
+        }
+        ansiblePlaybook credentialsId: 'gcp-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'ansible/backend/inventory.inv', playbook: 'ansible/backend/deploy-usuario.yml'
+      }
+    }
+
+    stage('deploy-files') {
+      when {
+        changeset '**/microservicios/Files/**'
+      }
+      steps {
+        dir('microservicios/Files'){
+          script {
+            try {
+              sh 'docker rmi blocnotas/files:lts'
+            } catch (Exception e) {
+              echo 'Exception occurred: ' + e.toString()
+            }
+          }          
+        }
+        dir('microservicios'){          
+          // Files
+          sh 'docker build -t blocnotas/files:lts -f Files/Dockerfile .'
+          sh 'docker push blocnotas/files:lts'
+        }
+        ansiblePlaybook credentialsId: 'gcp-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'ansible/backend/inventory.inv', playbook: 'ansible/backend/deploy-files.yml'
+      }
+    }
+
+    stage('build-esb') {
+      when {
+        changeset '**/esb/**'
+      }
+      steps {
+        dir('esb/'){
+          sh 'ls'
+          sh 'npm install'
+        }
+      }
+    }
+
+    stage('deploy-esb') {
+      when {
+        changeset '**/esb/**'
+      }
+      steps {
+        dir('esb/'){
+          script {
+            try {
+              sh 'docker rmi blocnotas/esb:lts'
+            } catch (Exception e) {
+              echo 'Exception occurred: ' + e.toString()
+            }
+          }
+        }
+        dir('esb/'){          
+          // Prediction
+          sh 'docker build -t blocnotas/esb:lts -f dockerfile .'
+          sh 'docker push blocnotas/esb:lts'
+        }
+        ansiblePlaybook credentialsId: 'aws-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'ansible/esb/inventory.inv', playbook: 'ansible/esb/deploy-esb.yml'
+      }
+    }
+
+    stage('build-frontend') {
+      when {
+        changeset '**/soccer-stats-frontend/**'
+      }
+      steps {
+        dir('soccer-stats-frontend') {
+          sh 'npm install'
+          sh 'npm run build'
+        }
+      }
+    }
+
+    stage('deploy-frontend') {
+      when {
+        changeset '**/soccer-stats-frontend/**'
+      }
+      steps {
+        ansiblePlaybook credentialsId: 'gcp-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'ansible/frontend/inventory.inv', playbook: 'ansible/frontend/nginx.yml'
+        ansiblePlaybook credentialsId: 'gcp-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'ansible/frontend/inventory.inv', playbook: 'ansible/frontend/sync.yml'
+      }
+    }
+  }
+}

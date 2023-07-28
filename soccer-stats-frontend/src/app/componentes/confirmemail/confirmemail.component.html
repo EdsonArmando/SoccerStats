@@ -1,0 +1,78 @@
+<div class="example-container">
+
+
+    <mat-toolbar color="" class="example-toolbar">
+        <h2 class="example-app-name" id="title">Soccer Stats</h2>
+        <span class="example-spacer"></span>
+
+        <button (click)="routlogin()" style="margin-right: -0.5%; color: azure; background-color: rgb(59, 59, 59);"
+            mat-icon-button matTooltip="Login" id="button1" class="example-icon favorite-icon"
+            aria-label="Example icon-button with heart icon">
+            <mat-icon style="color: azure;">account_circle</mat-icon>
+        </button>
+        <button (click)="routregister()" style="margin-right: -0.5%;color: azure; background-color: rgb(59, 59, 59);"
+            mat-icon-button matTooltip="Register" id="button1" class="example-icon favorite-icon"
+            aria-label="Example icon-button with heart icon">
+            <mat-icon style="color: azure;">how_to_reg</mat-icon>
+        </button>
+        <button (click)="routhome()" style="margin-right: 0.5%;color: azure; background-color: rgb(59, 59, 59);"
+            mat-icon-button matTooltip="Home" id="button1" class="example-icon favorite-icon"
+            aria-label="Example icon-button with heart icon">
+            <mat-icon style="color: azure;">home</mat-icon>
+        </button>
+
+    </mat-toolbar>
+    
+    <mat-card style="height: 100%;  background-image: linear-gradient(130deg, rgba(0, 172, 149, 0.432), white);">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>IP_ESB</mat-label>
+            <mat-select  [(ngModel)]="ipESB">
+              <mat-option value="http://motomami/" >
+                Grupo A
+              </mat-option>
+              <mat-option value="http://35.226.118.223:3000/esb/auth/" >
+                Grupo B 35.226.118.223:3000
+              </mat-option>
+              <mat-option value="http://34.132.88.81:7050/esb/auth/" >
+                Grupo C 34.132.88.81:7050
+              </mat-option>
+              <mat-option value="http://104.198.130.96:3000/esb/auth/" >
+                Grupo D 104.198.130.96:3000
+              </mat-option>
+              <mat-option value="http://104.198.130.96:3000/esb/auth/" >
+                Grupo E 104.198.130.96:3000
+              </mat-option>
+              <mat-option value="http://34.71.127.255:80/esb/auth/" >
+                Grupo F 34.71.127.255:80
+              </mat-option>
+              <mat-option value="http://34.125.61.119:3000/esb/auth/" >
+                Grupo G 34.125.61.119:3000
+              </mat-option>
+              <mat-option value="http://34.132.139.69:5000/esb/auth/" >
+                Grupo H 34.132.139.69:5000
+              </mat-option>
+              <mat-option value="http://34.125.81.45:3000/esb/auth/" >
+                Grupo I 34.125.81.45:3000
+              </mat-option>
+              <mat-option value="http://3.15.227.171:3000/esb/auth/" >
+                Grupo J 3.15.227.171:3000
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button class="btn btn-primary" (click)="routes()"> Enviar </button>
+        <br>
+        <h1>Congratulations!</h1>
+        <br>
+        <br>
+        <br>
+        <h3>Your email has already been confirmed.</h3>
+        <h3>You can now login to the aplication.</h3>
+        <br>
+        <br>
+        <img id='imgRedonda' matTooltip="Login" style="object-fit:cover"
+            [src]="'https://www.pngall.com/wp-content/uploads/2016/07/Success-PNG-Image.png'" (click)="routlogin()"
+            class="img-fluid" alt="no image" width="250" height="250">
+    </mat-card>
+
+
+</div>

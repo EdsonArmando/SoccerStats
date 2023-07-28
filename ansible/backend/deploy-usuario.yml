@@ -1,0 +1,23 @@
+- hosts: backend
+  become: yes
+  tasks:
+    - name: "delete-usuario-container"
+      docker_container:
+        name: usuario
+        state: absent
+
+    - name: "Remove usuario image"
+      docker_image:
+        state: absent
+        name: blocnotas/usuario
+        tag: lts
+
+    - name: "deploy-usuario"
+      docker_container:
+        name: usuario
+        image: blocnotas/usuario:lts
+        state: started
+        exposed_ports:
+          - "5003:5003"
+        ports: 
+          - "5003:5003"

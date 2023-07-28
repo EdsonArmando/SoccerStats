@@ -1,0 +1,11 @@
+- hosts: frontend
+  tasks:
+  - name: "sync website"
+    synchronize:
+      src: ../../soccer-stats-frontend/dist/soccer-stats-frontend/
+      dest: /var/www/
+      archive: no
+      checksum: yes
+      recursive: yes
+      delete: yes
+    become: no

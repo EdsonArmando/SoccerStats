@@ -1,0 +1,654 @@
+<div style="padding-left: 10px; padding-top: 10px">
+  <div class="example-container">
+    <button mat-raised-button (click)="Reporte1()" id="espacio" color="primary"
+    class="btn btn-outline-success my-2 my-sm-0" type="submit">
+  <mat-icon>edit</mat-icon>GenerarReporte1
+  </button>
+  <br>
+  <br>
+  <button mat-raised-button (click)="Reporte2()" id="espacio" color="primary"
+    class="btn btn-outline-success my-2 my-sm-0" type="submit">
+  <mat-icon>edit</mat-icon>GenerarReporte2
+  </button>
+  <br>
+  <br>
+  <button mat-raised-button (click)="Reporte3()" id="espacio" color="primary"
+    class="btn btn-outline-success my-2 my-sm-0" type="submit">
+  <mat-icon>edit</mat-icon>GenerarReporte3
+  </button>
+  <br>
+  <br>
+  <button mat-raised-button (click)="Reporte4()" id="espacio" color="primary"
+    class="btn btn-outline-success my-2 my-sm-0" type="submit">
+  <mat-icon>edit</mat-icon>GenerarReporte4
+  </button>
+  <br>
+  <br>
+  <button mat-raised-button (click)="Reporte5()" id="espacio" color="primary"
+    class="btn btn-outline-success my-2 my-sm-0" type="submit">
+  <mat-icon>edit</mat-icon>GenerarReporte5
+  </button>
+  <br>
+  <br>
+  <button mat-raised-button (click)="Reporte6()" id="espacio" color="primary"
+    class="btn btn-outline-success my-2 my-sm-0" type="submit">
+  <mat-icon>edit</mat-icon>GenerarReporte6
+  </button>
+  <br>
+  <br>
+  <button mat-raised-button (click)="Reporte7()" id="espacio" color="primary"
+    class="btn btn-outline-success my-2 my-sm-0" type="submit">
+  <mat-icon>edit</mat-icon>GenerarReporte7
+  </button>
+  <br>
+  <br>
+  <button mat-raised-button (click)="Reporte8()" id="espacio" color="primary"
+    class="btn btn-outline-success my-2 my-sm-0" type="submit">
+  <mat-icon>edit</mat-icon>GenerarReporte8
+  </button>
+  <br>
+  <br>
+  <button mat-raised-button (click)="Reporte9()" id="espacio" color="primary"
+  class="btn btn-outline-success my-2 my-sm-0" type="submit">
+  <mat-icon>edit</mat-icon>GenerarReporte9
+  </button>
+  <br>
+  <br>
+  <button mat-raised-button (click)="Reporte10()" id="espacio" color="primary"
+  class="btn btn-outline-success my-2 my-sm-0" type="submit">
+  <mat-icon>edit</mat-icon>GenerarReporte10
+  </button>
+  </div>
+</div>
+<div class="contenedor" *ngIf="repo1">
+
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Usuarios Suscritos a X equipo
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Equipo</mat-label>
+              <mat-select  [(ngModel)]="id_team">
+                <mat-option *ngFor="let ciudad of equipos" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte1()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte1
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(1)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="repo1" id="pdfTable" #pdfTable>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">id</th>
+            <th scope="col">name</th>
+            <th scope="col">lastname</th>
+            <th scope="col">nationality</th>
+            <th scope="col">photo</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td>{{repo.id}}</td>
+            <td>{{repo.name}}</td>
+            <td>{{repo.lastname}}</td>
+            <td>{{repo.nationality}}</td>
+            <td><img id='imgRedonda' style="object-fit:cover;" [src]="repo.photo" class="img-fluid"
+              alt="no image" width="50" height="50"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+  </div>
+</div>
+<div class="contenedor" *ngIf="repo2">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Usuarios con o sin membresia
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Membership</mat-label>
+              <mat-select  [(ngModel)]="membership">
+                <mat-option [value]="0" >
+                  NoMemberShip
+                </mat-option>
+                <mat-option [value]="1" >
+                  MemberShip
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte2()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte2
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(2)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="repo2" id="pdfTable2" #pdfTable2>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">id</th>
+            <th scope="col">name</th>
+            <th scope="col">lastname</th>
+            <th scope="col">nationality</th>
+            <th scope="col">photo</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td>{{repo.id}}</td>
+            <td>{{repo.name}}</td>
+            <td>{{repo.lastname}}</td>
+            <td>{{repo.nationality}}</td>
+            <td><img id='imgRedonda' style="object-fit:cover;" [src]="repo.photo" class="img-fluid"
+              alt="no image" width="50" height="50"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="contenedor" *ngIf="repo3">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Usuarios que Mas membresías han adquirido
+          </h1>
+        </mat-card>
+        <br>
+        <br>
+        <button mat-raised-button (click)="Reporte3()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte3
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(1)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="repo3" id="pdfTable" #pdfTable>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">id</th>
+            <th scope="col">name</th>
+            <th scope="col">lastname</th>
+            <th scope="col">nationality</th>
+            <th scope="col">photo</th>
+            <th scope="col">count</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td>{{repo.id}}</td>
+            <td>{{repo.name}}</td>
+            <td>{{repo.lastname}}</td>
+            <td>{{repo.nationality}}</td>
+            <td><img id='imgRedonda' style="object-fit:cover;" [src]="repo.photo" class="img-fluid"
+              alt="no image" width="50" height="50"></td>
+            <td>{{repo.count}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="contenedor" *ngIf="repo4">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Usuarios que más dinero han gastado
+          </h1>
+        </mat-card>
+        <br>
+        <br>
+        <button mat-raised-button (click)="Reporte4()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte4
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(1)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="repo4" id="pdfTable" #pdfTable>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">id</th>
+            <th scope="col">name</th>
+            <th scope="col">lastname</th>
+            <th scope="col">nationality</th>
+            <th scope="col">photo</th>
+            <th scope="col">amount</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td>{{repo.id}}</td>
+            <td>{{repo.name}}</td>
+            <td>{{repo.lastname}}</td>
+            <td>{{repo.nationality}}</td>
+            <td><img id='imgRedonda' style="object-fit:cover;" [src]="repo.photo" class="img-fluid"
+              alt="no image" width="50" height="50"></td>
+            <td>{{repo.amount}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="contenedor" *ngIf="repo5">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Elegir Ciudad Reporte 5
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Ciudad</mat-label>
+              <mat-select  [(ngModel)]="idPais">
+                <mat-option *ngFor="let ciudad of paises" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte5()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte5
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(5)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="repo5" id="pdfTable5" #pdfTable5>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">id</th>
+            <th scope="col">name</th>
+            <th scope="col">lastname</th>
+            <th scope="col">photo</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td>{{repo.id}}</td>
+            <td>{{repo.name}}</td>
+            <td>{{repo.lastname}}</td>
+            <td><img id='imgRedonda' style="object-fit:cover;" [src]="repo.photo" class="img-fluid"
+              alt="no image" width="50" height="50"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Reporte Numero 6 -->
+<div class="contenedor" *ngIf="repo6">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Usuarios de X genero
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Genero</mat-label>
+              <mat-select  [(ngModel)]="genero">
+                <mat-option [value]="1" >
+                  Masculino
+                </mat-option>
+                <mat-option [value]="2" >
+                  Femenino
+                </mat-option>
+                <mat-option [value]="3" >
+                  Hibrido
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte6()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte6
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(6)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="repo6" id="pdfTable6" #pdfTable6>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">id</th>
+            <th scope="col">name</th>
+            <th scope="col">lastname</th>
+            <th scope="col">photo</th>
+            <th scope="col">nationality</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td>{{repo.id}}</td>
+            <td>{{repo.name}}</td>
+            <td>{{repo.lastname}}</td>
+            <td><img id='imgRedonda' style="object-fit:cover;" [src]="repo.photo" class="img-fluid"
+              alt="no image" width="50" height="50"></td>
+            <td>{{repo.nationality}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Reporte Numero 7 -->
+<div class="contenedor" *ngIf="repo7">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Usuarios con al menos X años de edad
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label id="inputmat1">Edad</mat-label>
+              <input matInput [(ngModel)]="edad" id="inputmat" name="title" placeholder="Ingrese Nombre"
+                     required>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte7()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte7
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(7)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="repo7" id="pdfTable7" #pdfTable7>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">id</th>
+            <th scope="col">name</th>
+            <th scope="col">lastname</th>
+            <th scope="col">photo</th>
+            <th scope="col">nationality</th>
+            <th scope="col">birth_date</th>
+            <th scope="col">age</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td>{{repo.id}}</td>
+            <td>{{repo.name}}</td>
+            <td>{{repo.lastname}}</td>
+            <td><img id='imgRedonda' style="object-fit:cover;" [src]="repo.photo" class="img-fluid"
+              alt="no image" width="50" height="50"></td>
+            <td>{{repo.nationality}}</td>
+            <td>{{repo.birth_date}}</td>
+            <td>{{repo.age}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Reporte Numero 8 -->
+<div class="contenedor" *ngIf="repo8">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Empleados que MAS/MENOS noticias han publicado
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Opcion</mat-label>
+              <mat-select  [(ngModel)]="option">
+                <mat-option value="0" >
+                  Menor
+                </mat-option>
+                <mat-option value="1" >
+                  Mayor
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte8()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte1
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(1)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="repo8" id="pdfTable8" #pdfTable8>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">id</th>
+            <th scope="col">name</th>
+            <th scope="col">lastname</th>
+            <th scope="col">nationality</th>
+            <th scope="col">photo</th>
+            <th scope="col">count</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td>{{repo.id}}</td>
+            <td>{{repo.name}}</td>
+            <td>{{repo.lastname}}</td>
+            <td>{{repo.nationality}}</td>
+            <td><img id='imgRedonda' style="object-fit:cover;" [src]="repo.photo" class="img-fluid"
+              alt="no image" width="40" height="40"></td>
+            <td>{{repo.count}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- Reporte Numero 9 -->
+    <div class="contenedor" *ngIf="repo9">
+      <div class="example-container">
+        <div class="contenedor">
+        <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+          <mat-card width="100%" id="card">
+            <h1 id="textalig">
+              Ingresar Opcion y Equipo Reporte 9
+            </h1>
+          </mat-card>
+          <br>
+          <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+            <mat-grid-tile>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Opcion</mat-label>
+                <mat-select  [(ngModel)]="option">
+                  <mat-option value="1" >
+                    Menor
+                  </mat-option>
+                  <mat-option value="0" >
+                    Mayor
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Equipo</mat-label>
+                <mat-select  [(ngModel)]="id_team">
+                  <mat-option *ngFor="let ciudad of equipos" [value]="ciudad.id" >
+                    {{ciudad.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-grid-tile>
+          </mat-grid-list>
+          <br>
+          <button mat-raised-button (click)="Reporte9()" id="espacio" color="primary"
+                  class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            <mat-icon>edit</mat-icon>GenerarReporte9
+          </button>
+          <br><br>
+          <button class="btn btn-primary" (click)="downloadAsPDF(9)">Generar PDF</button>
+        </mat-card>
+        <div *ngIf="repo9" id="pdfTable9" #pdfTable9>
+          <table class="table table-striped table-dark">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">id</th>
+              <th scope="col">name</th>
+              <th scope="col">lastname</th>
+              <th scope="col">nationality</th>
+              <th scope="col">photo</th>
+              <th scope="col">count</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let repo of data;let indexOfelement=index;">
+              <td>{{indexOfelement + 1}}</td>
+              <td>{{repo.id}}</td>
+              <td>{{repo.name}}</td>
+              <td>{{repo.lastname}}</td>
+              <td>{{repo.nationality}}</td>
+              <td><img id='imgRedonda' style="object-fit:cover;" [src]="repo.photo" class="img-fluid"
+                alt="no image" width="50" height="50"></td>
+              <td>{{repo.count}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Reporte Numero 10 -->
+<div class="contenedor" *ngIf="repo10">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <br>
+        <button mat-raised-button (click)="Reporte10()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte10
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(10)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="repo10" id="pdfTable10" #pdfTable10>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">id</th>
+            <th scope="col">name</th>
+            <th scope="col">lastname</th>
+            <th scope="col">photo</th>
+            <th scope="col">role</th>
+            <th scope="col">action</th>
+            <th scope="col">description</th>
+            <th scope="col">table</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td>{{repo.id}}</td>
+            <td>{{repo.user_name}}</td>
+            <td>{{repo.user_lastname}}</td>
+            <td><img id='imgRedonda' style="object-fit:cover;" [src]="repo.user_photo" class="img-fluid"
+                     alt="no image" width="50" height="50"></td>
+            <td>{{repo.user_role}}</td>
+            <td>{{repo.action}}</td>
+            <td>{{repo.date}}</td>
+            <td>{{repo.description}}</td>
+            <td>{{repo.database_table}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

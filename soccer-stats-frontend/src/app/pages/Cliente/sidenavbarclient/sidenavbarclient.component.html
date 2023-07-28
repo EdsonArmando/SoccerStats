@@ -1,0 +1,43 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="" class="example-toolbar">
+
+    <button id="btn" mat-icon-button (click)="snav.toggle()"></button>
+    <div class="container" id="title">
+      Soccer Stats
+    </div>
+    <span class="example-spacer"></span>
+
+
+    <img id='imgRedonda' style="margin-right: -0.9%;" [src]="photoSelected || 'assets/sinFoto.png'" class="img-fluid"
+      alt="no image" width="50" height="50" matTooltip="Bienvenido {{Username}}">
+
+    <button (click)="membresy()" style="margin-right: -1.0%;color: azure; background-color: rgb(59, 59, 59);" mat-icon-button
+      matTooltip="Adquire tu membresía" id="button1" class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon">
+      <mat-icon id="member"></mat-icon>
+    </button>
+
+    <button (click)="salir()" style="margin-right: -0.5%;color: azure; background-color: rgb(59, 59, 59);"
+      mat-icon-button matTooltip="Salir" id="button1" class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon">
+      <mat-icon style="color: azure;">exit_to_app</mat-icon>
+    </button>
+
+  </mat-toolbar>
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav class="matsnv" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <a mat-list-item style="color: black;" [routerLink]="nav.route" *ngFor="let nav of fillerNav; let i=index;">
+          <mat-icon id="btn{{nav.icon}}" class="icono"></mat-icon> {{nav.name}}
+        </a>
+
+      </mat-nav-list>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

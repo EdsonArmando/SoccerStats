@@ -1,0 +1,737 @@
+<mat-tab-group id="tabs">
+    <mat-tab id="matab" label="Reporte1">
+        <div class="example-large-box mat-elevation-z4" id="box">
+            <h6 id="textalig">
+                Reporte 1: Jugadores o Técnico de X equipo
+            </h6>
+            <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)">
+                <mat-grid-tile>
+                    <mat-form-field id="busca" class="example-full-width" appearance="fill">
+                        <mat-label style="color: #14ccb3;">
+                            <mat-icon matTooltip="Buscar">search</mat-icon>Buscar
+                        </mat-label>
+                        <input class="ng-pristine ng-invalid ng-invalid-required ng-touched" matInput
+                            placeholder="Busca cualquier palabra">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Equipo</mat-label>
+                        <mat-select [(ngModel)]="id_team">
+                            <mat-option *ngFor="let ciudad of equipos" [value]="ciudad.id">
+                                {{ciudad.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Player</mat-label>
+                        <mat-select [(ngModel)]="players">
+                            <mat-option [value]="0">
+                                Jugadores
+                            </mat-option>
+                            <mat-option [value]="1">
+                                Tecnico
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button class="btn btn-primary" (click)="Report1()">Resultados</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+
+            <div class="contenedor">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="position">
+                        <th mat-header-cell style="text-align: left;" *matHeaderCellDef> No. </th>
+                        <td mat-cell style="width: 4%;" *matCellDef="let element"> {{element.position}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Nombre </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.name}}
+                        </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="lastname">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Apellido </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.lastname}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="nationality">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Nacionalidad </th>
+                        <td mat-cell style="width: 15%; text-align: center;" *matCellDef="let element">
+                            {{element.nationality}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="photo">
+                        <th mat-header-cell style="text-align: center; " *matHeaderCellDef> Foto </th>
+                        <td mat-cell style="width: 15%; align-items: center; justify-content: center;text-align: center;
+                      position: center;" *matCellDef="let element">
+                            <img id='imgRedonda' style="object-fit:cover;" [src]="element.photo" class="img-fluid"
+                                alt="no image" width="50" height="50" matTooltip="{{element.name}}">
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab id="matab" label="Reporte2">
+        <div class="example-large-box mat-elevation-z4"id="box">
+            <h6 id="textalig">
+                Reporte 2 : Jugadores o Técnicos mayores a X años
+            </h6>
+            <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)">
+                <mat-grid-tile>
+                    <mat-form-field id="busca" class="example-full-width" appearance="fill">
+                        <mat-label style="color: #14ccb3;">
+                            <mat-icon matTooltip="Buscar">search</mat-icon>Buscar
+                        </mat-label>
+                        <input class="ng-pristine ng-invalid ng-invalid-required ng-touched" matInput
+                            placeholder="Busca cualquier palabra">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label id="inputmat1">Edad</mat-label>
+                        <input matInput [(ngModel)]="age" id="inputmat" name="title" placeholder="Ingrese Edad"
+                            required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Player</mat-label>
+                        <mat-select [(ngModel)]="players">
+                            <mat-option [value]="0">
+                                Jugadores
+                            </mat-option>
+                            <mat-option [value]="1">
+                                Tecnico
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button class="btn btn-primary" (click)="Report2()">Resultados</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <div class="contenedor">
+                <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="position">
+                        <th mat-header-cell style="text-align: left;" *matHeaderCellDef> No. </th>
+                        <td mat-cell style="width: 4%;" *matCellDef="let element"> {{element.position}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Nombre </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.name}}
+                        </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="lastname">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Apellido </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.lastname}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="age">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Edad </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.age}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="team">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> equipo </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.team}}
+                        </td>
+                    </ng-container>
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="nationality">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Nacionalidad </th>
+                        <td mat-cell style="width: 15%; text-align: center;" *matCellDef="let element">
+                            {{element.nationality}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="photo">
+                        <th mat-header-cell style="text-align: center; " *matHeaderCellDef> Foto </th>
+                        <td mat-cell style="width: 15%; align-items: center; justify-content: center;text-align: center;
+                      position: center;" *matCellDef="let element">
+                            <img id='imgRedonda' style="object-fit:cover;" [src]="element.photo" class="img-fluid"
+                                alt="no image" width="50" height="50" matTooltip="{{element.name}}">
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+                </table>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab id="matab" label="Reporte3">
+        <div class="example-large-box mat-elevation-z4"id="box">
+            <h6 id="textalig">
+                Reporte 3: Jugadores o Técnicos menores a X años
+            </h6>
+            <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)">
+                <mat-grid-tile>
+                    <mat-form-field id="busca" class="example-full-width" appearance="fill">
+                        <mat-label style="color: #14ccb3;">
+                            <mat-icon matTooltip="Buscar">search</mat-icon>Buscar
+                        </mat-label>
+                        <input class="ng-pristine ng-invalid ng-invalid-required ng-touched" matInput
+                            placeholder="Busca cualquier palabra">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label id="inputmat1">Edad</mat-label>
+                        <input matInput [(ngModel)]="age" id="inputmat" name="title" placeholder="Ingrese Edad"
+                            required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Player</mat-label>
+                        <mat-select [(ngModel)]="players">
+                            <mat-option [value]="0">
+                                Jugadores
+                            </mat-option>
+                            <mat-option [value]="1">
+                                Tecnico
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button class="btn btn-primary" (click)="Report3()">Resultados</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <div class="contenedor">
+                <table mat-table [dataSource]="dataSource3" class="mat-elevation-z8">
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="position">
+                        <th mat-header-cell style="text-align: left;" *matHeaderCellDef> No. </th>
+                        <td mat-cell style="width: 4%;" *matCellDef="let element"> {{element.position}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Nombre </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.name}}
+                        </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="lastname">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Apellido </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.lastname}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="age">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Edad </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.age}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="team">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> equipo </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.team}}
+                        </td>
+                    </ng-container>
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="nationality">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Nacionalidad </th>
+                        <td mat-cell style="width: 15%; text-align: center;" *matCellDef="let element">
+                            {{element.nationality}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="photo">
+                        <th mat-header-cell style="text-align: center; " *matHeaderCellDef> Foto </th>
+                        <td mat-cell style="width: 15%; align-items: center; justify-content: center;text-align: center;
+                      position: center;" *matCellDef="let element">
+                            <img id='imgRedonda' style="object-fit:cover;" [src]="element.photo" class="img-fluid"
+                                alt="no image" width="50" height="50" matTooltip="{{element.name}}">
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
+                </table>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab id="matab" label="Reporte4">
+        <div class="example-large-box mat-elevation-z4"id="box">
+            <h6 id="textalig">
+                Reporte 4: Equipos que participaron en X competición
+            </h6>
+            <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)">
+                <mat-grid-tile>
+                    <mat-form-field id="busca" class="example-full-width" appearance="fill">
+                        <mat-label style="color: #14ccb3;">
+                            <mat-icon matTooltip="Buscar">search</mat-icon>Buscar
+                        </mat-label>
+                        <input class="ng-pristine ng-invalid ng-invalid-required ng-touched" matInput
+                            placeholder="Busca cualquier palabra">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Competicion</mat-label>
+                        <mat-select [(ngModel)]="idcompetition">
+                            <mat-option *ngFor="let ciudad of competiciones" [value]="ciudad.id">
+                                {{ciudad.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <button class="btn btn-primary" (click)="Report4()">Resultados</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <div class="contenedor">
+                <table mat-table [dataSource]="dataSource4" class="mat-elevation-z8">
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="position">
+                        <th mat-header-cell style="text-align: left;" *matHeaderCellDef> No. </th>
+                        <td mat-cell style="width: 4%;" *matCellDef="let element"> {{element.position}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="team">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Equipo </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.team}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="photo">
+                        <th mat-header-cell style="text-align: center; " *matHeaderCellDef> Foto </th>
+                        <td mat-cell style="width: 15%; align-items: center; justify-content: center;text-align: center;
+                      position: center;" *matCellDef="let element">
+                            <img id='imgRedonda' style="object-fit:cover;" [src]="element.photo" class="img-fluid"
+                                alt="no image" width="50" height="50" matTooltip="{{element.team}}">
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns4"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns4;"></tr>
+                </table>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab id="matab" label="Reporte5">
+        <div class="example-large-box mat-elevation-z4"id="box">
+            <h6 id="textalig">
+                Reporte 5 : Equipos de X país
+            </h6>
+            <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)">
+                <mat-grid-tile>
+                    <mat-form-field id="busca" class="example-full-width" appearance="fill">
+                        <mat-label style="color: #14ccb3;">
+                            <mat-icon matTooltip="Buscar">search</mat-icon>Buscar
+                        </mat-label>
+                        <input class="ng-pristine ng-invalid ng-invalid-required ng-touched" matInput
+                            placeholder="Busca cualquier palabra">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Ciudad</mat-label>
+                        <mat-select [(ngModel)]="idCountry">
+                            <mat-option *ngFor="let ciudad of paises" [value]="ciudad.id">
+                                {{ciudad.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <button class="btn btn-primary" (click)="Report5()">Resultados</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <div class="contenedor">
+                <table mat-table [dataSource]="dataSource5" class="mat-elevation-z8">
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="position">
+                        <th mat-header-cell style="text-align: left;" *matHeaderCellDef> No. </th>
+                        <td mat-cell style="width: 4%;" *matCellDef="let element"> {{element.position}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="team">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Equipo </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.team}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="photo">
+                        <th mat-header-cell style="text-align: center; " *matHeaderCellDef> Foto </th>
+                        <td mat-cell style="width: 15%; align-items: center; justify-content: center;text-align: center;
+                      position: center;" *matCellDef="let element">
+                            <img id='imgRedonda' style="object-fit:cover;" [src]="element.photo" class="img-fluid"
+                                alt="no image" width="50" height="50" matTooltip="{{element.team}}">
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns5"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns5;"></tr>
+                </table>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab id="matab" label="Reporte6">
+        <div class="example-large-box mat-elevation-z4"id="box">
+            <h6 id="textalig">
+                Reporte 6: Equipos con X años de antigüedad
+            </h6>
+            <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)">
+                <mat-grid-tile>
+                    <mat-form-field id="busca" class="example-full-width" appearance="fill">
+                        <mat-label style="color: #14ccb3;">
+                            <mat-icon matTooltip="Buscar">search</mat-icon>Buscar
+                        </mat-label>
+                        <input class="ng-pristine ng-invalid ng-invalid-required ng-touched" matInput
+                            placeholder="Busca cualquier palabra">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label id="inputmat1">Edad</mat-label>
+                        <input matInput [(ngModel)]="age" id="inputmat" name="title" placeholder="Ingrese Edad"
+                            required>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <button class="btn btn-primary" (click)="Report6()">Resultados</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <div class="contenedor">
+                <table mat-table [dataSource]="dataSource6" class="mat-elevation-z8">
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="id_team">
+                        <th mat-header-cell style="text-align: left;" *matHeaderCellDef> No. </th>
+                        <td mat-cell style="width: 4%;" *matCellDef="let element"> {{element.id_team}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="team">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Equipo </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.team}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="foundation_date">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Fundacion </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.foundation_date}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="country">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Ciudad </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.country}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="photo">
+                        <th mat-header-cell style="text-align: center; " *matHeaderCellDef> Foto </th>
+                        <td mat-cell style="width: 15%; align-items: center; justify-content: center;text-align: center;
+                      position: center;" *matCellDef="let element">
+                            <img id='imgRedonda' style="object-fit:cover;" [src]="element.photo" class="img-fluid"
+                                alt="no image" width="50" height="50" matTooltip="{{element.team}}">
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns6"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns6;"></tr>
+                </table>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab id="matab" label="Reporte7">
+        <div class="example-large-box mat-elevation-z4"id="box">
+            <h6 id="textalig">
+                Reporte 7: Estadios en X país
+            </h6>
+            <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)">
+                <mat-grid-tile>
+                    <mat-form-field id="busca" class="example-full-width" appearance="fill">
+                        <mat-label style="color: #14ccb3;">
+                            <mat-icon matTooltip="Buscar">search</mat-icon>Buscar
+                        </mat-label>
+                        <input class="ng-pristine ng-invalid ng-invalid-required ng-touched" matInput
+                            placeholder="Busca cualquier palabra">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Ciudad</mat-label>
+                        <mat-select [(ngModel)]="idCountry">
+                            <mat-option *ngFor="let ciudad of paises" [value]="ciudad.id">
+                                {{ciudad.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <button class="btn btn-primary" (click)="Report7()">Resultados</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <div class="contenedor">
+                <table mat-table [dataSource]="dataSource7" class="mat-elevation-z8">
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="id_stadium">
+                        <th mat-header-cell style="text-align: left;" *matHeaderCellDef> No. </th>
+                        <td mat-cell style="width: 4%;" *matCellDef="let element"> {{element.id_stadium}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="stadium">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Equipo </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.stadium}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="photo">
+                        <th mat-header-cell style="text-align: center; " *matHeaderCellDef> Foto </th>
+                        <td mat-cell style="width: 15%; align-items: center; justify-content: center;text-align: center;
+                      position: center;" *matCellDef="let element">
+                            <img id='imgRedonda' style="object-fit:cover;" [src]="element.photo" class="img-fluid"
+                                alt="no image" width="50" height="50" matTooltip="{{element.team}}">
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns7"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns7;"></tr>
+                </table>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab id="matab" label="Reporte8">
+        <div class="example-large-box mat-elevation-z4"id="box">
+            <h6 id="textalig">
+                Reporte 8 : Estadios con capacidad menor o igual a X
+            </h6>
+            <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)">
+                <mat-grid-tile>
+                    <mat-form-field id="busca" class="example-full-width" appearance="fill">
+                        <mat-label style="color: #14ccb3;">
+                            <mat-icon matTooltip="Buscar">search</mat-icon>Buscar
+                        </mat-label>
+                        <input class="ng-pristine ng-invalid ng-invalid-required ng-touched" matInput
+                            placeholder="Busca cualquier palabra">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label id="inputmat1">Capacity</mat-label>
+                        <input matInput [(ngModel)]="capacity" id="inputmat" name="title"
+                            placeholder="Ingrese capacidad" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <button class="btn btn-primary" (click)="Report8()">Resultados</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <div class="contenedor">
+                <table mat-table [dataSource]="dataSource8" class="mat-elevation-z8">
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="id_stadium">
+                        <th mat-header-cell style="text-align: left;" *matHeaderCellDef> No. </th>
+                        <td mat-cell style="width: 4%;" *matCellDef="let element"> {{element.id_stadium}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="stadium">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Equipo </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.stadium}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="country">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Ciudad </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.country}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="capacity">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Capacidad </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.capacity}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="photo">
+                        <th mat-header-cell style="text-align: center; " *matHeaderCellDef> Foto </th>
+                        <td mat-cell style="width: 15%; align-items: center; justify-content: center;text-align: center;
+                      position: center;" *matCellDef="let element">
+                            <img id='imgRedonda' style="object-fit:cover;" [src]="element.photo" class="img-fluid"
+                                alt="no image" width="50" height="50" matTooltip="{{element.team}}">
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns8"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns8;"></tr>
+                </table>
+            </div>
+        </div>
+    </mat-tab>
+
+    <mat-tab id="matab" label="Reporte11">
+        <div class="example-large-box mat-elevation-z4"id="box">
+            <h6 id="textalig">
+                Reporte 11 : Partidos donde hubo al menos X goles
+            </h6>
+            <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)">
+                <mat-grid-tile>
+                    <mat-form-field id="busca" class="example-full-width" appearance="fill">
+                        <mat-label style="color: #14ccb3;">
+                            <mat-icon matTooltip="Buscar">search</mat-icon>Buscar
+                        </mat-label>
+                        <input class="ng-pristine ng-invalid ng-invalid-required ng-touched" matInput
+                            placeholder="Busca cualquier palabra">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label id="inputmat1">Goal</mat-label>
+                        <input matInput [(ngModel)]="goals" id="inputmat" name="title" placeholder="Ingrese Goals"
+                            required>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <button class="btn btn-primary" (click)="Report11()">Resultados</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <div class="contenedor">
+                <table mat-table [dataSource]="dataSource11" class="mat-elevation-z8">
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="attendees">
+                        <th mat-header-cell style="text-align: left;" *matHeaderCellDef> Attendees </th>
+                        <td mat-cell style="width: 4%;" *matCellDef="let element"> {{element.attendees}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="competition">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Competicion </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.competition}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="game_date">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Fecha Juego </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.game_date}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="goles">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Goles </th>
+                        <td mat-cell style="width: 5%; text-align: center;" *matCellDef="let element">
+                            {{element.goles}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="photo_local">
+                        <th mat-header-cell style="text-align: center; " *matHeaderCellDef> Foto </th>
+                        <td mat-cell style="width: 15%; align-items: center; justify-content: center;text-align: center;
+                      position: center;" *matCellDef="let element">
+                            <img id='imgRedonda' style="object-fit:cover;" [src]="element.photo_local" class="img-fluid"
+                                alt="no image" width="50" height="50" matTooltip="{{element.team_local}}">
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="photo_visiting">
+                        <th mat-header-cell style="text-align: center; " *matHeaderCellDef> Foto </th>
+                        <td mat-cell style="width: 15%; align-items: center; justify-content: center;text-align: center;
+                      position: center;" *matCellDef="let element">
+                            <img id='imgRedonda' style="object-fit:cover;" [src]="element.photo_visiting" class="img-fluid"
+                                alt="no image" width="50" height="50" matTooltip="{{element.team_visiting}}">
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="result_local">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Resultado Local </th>
+                        <td mat-cell style="width: 5%; text-align: center;" *matCellDef="let element">
+                            {{element.result_local}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="result_visiting">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Resultado Visitantes </th>
+                        <td mat-cell style="width: 5%; text-align: center;" *matCellDef="let element">
+                            {{element.result_visiting}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="stadium">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Estadio </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.stadium}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="status">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Estado </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.status}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="team_local">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Local </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.team_local}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="team_visiting">
+                        <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Visitante </th>
+                        <td mat-cell style="width: 20%; text-align: center;" *matCellDef="let element">
+                            {{element.team_visiting}}
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns11"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns11;"></tr>
+                </table>
+            </div>
+        </div>
+    </mat-tab>
+</mat-tab-group>

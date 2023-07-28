@@ -1,0 +1,23 @@
+- hosts: backend
+  become: yes
+  tasks:
+    - name: "delete-esb-container"
+      docker_container:
+        name: esb
+        state: absent
+
+    - name: "Remove esb image"
+      docker_image:
+        state: absent
+        name: blocnotas/esb
+        tag: lts
+
+    - name: "deploy-esb"
+      docker_container:
+        name: esb
+        image: blocnotas/esb:lts
+        state: started
+        exposed_ports:
+          - "3000:3000"
+        ports: 
+          - "3000:3000"

@@ -1,0 +1,93 @@
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Editar Tecnico
+          </h1>
+        </mat-card>
+        <br>
+
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label id="inputmat1">Nombre</mat-label>
+              <input matInput [(ngModel)]="name" id="inputmat" name="title" placeholder="Ingrese Nombre"
+                     required>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label id="inputmat1">Apellido</mat-label>
+              <input matInput [(ngModel)]="lastname" id="inputmat" name="title" placeholder="Ingrese Apellido"
+                     required>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <input type="file" class="d-done" (change)="onFileChanged($event)">
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label id="inputmat1">Estado</mat-label>
+              <input matInput [(ngModel)]="status" id="inputmat" name="state" placeholder="Ingrese Estado"
+                     required>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Ciudad</mat-label>
+              <mat-select  [(ngModel)]="idCountry">
+                <mat-option *ngFor="let ciudad of paises" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Equipo</mat-label>
+              <mat-select  [(ngModel)]="id_team">
+                <mat-option *ngFor="let ciudad of equipos" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field appearance="fill" class="example-full-width">
+              <mat-label id="inputmat1">Fecha de Nacimiento</mat-label>
+              <input matInput [matDatepicker]="datepicker" [(ngModel)]="birthdate" [value]="birthdate">
+              <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker>
+                <mat-datepicker-actions>
+                  <button mat-button matDatepickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+              </mat-datepicker>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field appearance="fill" class="example-full-width">
+              <mat-label id="inputmat1">Fecha de Contratacion</mat-label>
+              <input matInput [matDatepicker]="datepicker2" [(ngModel)]="startDate" [value]="startDate">
+              <mat-datepicker-toggle matSuffix [for]="datepicker2"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker2>
+                <mat-datepicker-actions>
+                  <button mat-button matDatepickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+              </mat-datepicker>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Register()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>Editar Jugador
+        </button>
+      </mat-card>
+    </div>
+  </div>
+
+</div>

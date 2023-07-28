@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="boton">
+    <button class="mat-raised-button" routerLink="/pages/empleado/createTeam"
+            type="submit">CrearEquipo</button>
+  </div>
+  <h1>
+    Equipos
+  </h1>
+  <table class="table table-striped table-dark">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Photo</th>
+      <th scope="col">FechaFundacion</th>
+      <th scope="col">idCiudad</th>
+      <th scope="col">Eliminar</th>
+      <th scope="col">Editar</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let team of allTeam;let indexOfelement=index;">
+      <td>{{indexOfelement}}</td>
+      <td>{{team.name}}</td>
+      <td><img id='imgRedonda' style="object-fit:cover;" [src]="team.photo" class="img-fluid"
+               alt="no image" width="50" height="50"></td>
+      <td>{{team.foundation_date}}</td>
+      <td>{{team.idCountry}}</td>
+      <td><a  href="/pages/empleado/equipo" (click)="deleteTeam(team.id)">Eliminar</a></td>
+      <td><a [routerLink]="['/pages/empleado/updateEquipo',{id: team.id, name: team.name
+      ,photo: team.photo, fundacion: team.foundation_date, ciudad: team.idCountry}]">Editar</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

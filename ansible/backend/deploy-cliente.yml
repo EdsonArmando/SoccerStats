@@ -1,0 +1,23 @@
+- hosts: backend
+  become: yes
+  tasks:
+    - name: "delete-cliente-container"
+      docker_container:
+        name: cliente
+        state: absent
+
+    - name: "Remove cliente image"
+      docker_image:
+        state: absent
+        name: blocnotas/cliente
+        tag: lts
+
+    - name: "deploy-cliente"
+      docker_container:
+        name: cliente
+        image: blocnotas/cliente:lts
+        state: started
+        exposed_ports:
+          - "5000:5000"
+        ports: 
+          - "5000:5000"

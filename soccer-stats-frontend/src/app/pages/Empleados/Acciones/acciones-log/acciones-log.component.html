@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="boton">
+    <button class="mat-raised-button" routerLink="/pages/empleado/transfer"
+            type="submit">Transferencias</button>
+  </div>
+  <h1>
+    Bitacora
+  </h1>
+  <table class="table table-striped table-dark">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">id_player</th>
+      <th scope="col">id_team_origin</th>
+      <th scope="col">id_team_destination</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let team of logs;let indexOfelement=index;">
+      <td>{{indexOfelement}}</td>
+      <td>{{team.id_player}}</td>
+      <td>{{team.id_team_origin}}</td>
+      <td>{{team.id_team_destination}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

@@ -1,0 +1,9 @@
+FROM node:14 as build
+WORKDIR /usr/local/app
+COPY cliente/package*.json ./ 
+ENV PORT=5000
+RUN npm install
+COPY cliente/ cliente/
+COPY database/  database/
+EXPOSE 5000
+CMD ["node", "cliente/server.js"]

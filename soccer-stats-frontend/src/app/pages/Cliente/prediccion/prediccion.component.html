@@ -1,0 +1,49 @@
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Predicción de resultados
+          </h1>
+          <hr><br>
+          <mat-card width="100%" id="card">
+            <h1 id="textalig">
+              Selecciona el partido a disputar:
+            </h1><hr>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Selecciona el equipo local</mat-label>
+              <mat-select  [(ngModel)]="local">
+                <mat-option *ngFor="let equipo of equipos" [value]="equipo.id" >{{equipo.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            VS
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Selecciona el equipo visitante</mat-label>
+              <mat-select  [(ngModel)]="visitante">
+                <mat-option *ngFor="let equipo of equipos" [value]="equipo.id" >{{equipo.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            En la competencia
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Selecciona la competencia</mat-label>
+              <mat-select  [(ngModel)]="compId">
+                <mat-option *ngFor="let comp of comps" [value]="comp.id" >{{comp.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <br>
+            <button mat-raised-button (click)="predecirResultado()" id="espacio" color="primary"
+        class="btn btn-outline-success my-2 my-sm-0" type="submit">PREDECIR</button>
+          </mat-card>
+          <br>
+          <mat-card rd width="100%" id="card">
+            <h1 id="textalig">
+              Resultado estimado:
+            </h1><hr>
+            <input matInput id="inputmat" [(ngModel)]="resultado" name="contra" [type]="'text'">
+          </mat-card>
+        </mat-card>
+      </mat-card>
+    </div>
+  </div>
+</div>

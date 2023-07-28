@@ -1,0 +1,1073 @@
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Reporte 1: Jugadores o Técnico de X equipo
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Equipo</mat-label>
+              <mat-select  [(ngModel)]="id_team">
+                <mat-option *ngFor="let ciudad of equipos" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Player</mat-label>
+              <mat-select  [(ngModel)]="players">
+                <mat-option [value]="0" >
+                  Jugadores
+                </mat-option>
+                <mat-option [value]="1" >
+                  Tecnico
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte1()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(1)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="showRepo1" id="pdfTable1" #pdfTable1>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">id</th>
+            <th scope="col">lastname</th>
+            <th scope="col">name</th>
+            <th scope="col">nationality</th>
+            <th scope="col">photo</th>
+            <th scope="col">position</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td>{{repo.id}}</td>
+            <td>{{repo.lastname}}</td>
+            <td>{{repo.name}}</td>
+            <td>{{repo.nationality}}</td>
+            <td>{{repo.nationality}}</td>
+            <td>{{repo.position}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Reporte Numero 2 -->
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Reporte 2 : Jugadores o Técnicos mayores a X años
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label id="inputmat1">Edad</mat-label>
+              <input matInput [(ngModel)]="age" id="inputmat" name="title" placeholder="Ingrese Edad"
+                     required>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Player</mat-label>
+              <mat-select  [(ngModel)]="players">
+                <mat-option [value]="0" >
+                  Jugadores
+                </mat-option>
+                <mat-option [value]="1" >
+                  Tecnico
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte2()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(2)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="showRepo2" id="pdfTable2" #pdfTable2>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">edad</th>
+            <th scope="col">id</th>
+            <th scope="col">lastname</th>
+            <th scope="col">name</th>
+            <th scope="col">nationality</th>
+            <th scope="col">photo</th>
+            <th scope="col">position</th>
+            <th scope="col">team</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td>{{repo.edad}}</td>
+            <td>{{repo.id}}</td>
+            <td>{{repo.lastname}}</td>
+            <td>{{repo.name}}</td>
+            <td>{{repo.nationality}}</td>
+            <td>{{repo.nationality}}</td>
+            <td>{{repo.position}}</td>
+            <td>{{repo.team}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Reporte Numero 3 -->
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Reporte 3: Jugadores o Técnicos menores a X años
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label id="inputmat1">Edad</mat-label>
+              <input matInput [(ngModel)]="age" id="inputmat" name="title" placeholder="Ingrese Edad"
+                     required>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Player</mat-label>
+              <mat-select  [(ngModel)]="players">
+                <mat-option [value]="0" >
+                  Jugadores
+                </mat-option>
+                <mat-option [value]="1" >
+                  Tecnico
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte3()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(3)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="showRepo3" id="pdfTable3" #pdfTable3>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">edad</th>
+            <th scope="col">id</th>
+            <th scope="col">lastname</th>
+            <th scope="col">name</th>
+            <th scope="col">nationality</th>
+            <th scope="col">photo</th>
+            <th scope="col">position</th>
+            <th scope="col">team</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td>{{repo.edad}}</td>
+            <td>{{repo.id}}</td>
+            <td>{{repo.lastname}}</td>
+            <td>{{repo.name}}</td>
+            <td>{{repo.nationality}}</td>
+            <td>{{repo.nationality}}</td>
+            <td>{{repo.position}}</td>
+            <td>{{repo.team}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Reporte Numero 5 -->
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Reporte 4: Equipos que participaron en X competición
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Competicion</mat-label>
+              <mat-select  [(ngModel)]="idcompetition">
+                <mat-option *ngFor="let ciudad of competiciones" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte4()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(4)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="showRepo4" id="pdfTable4" #pdfTable4>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">id</th>
+            <th scope="col">team</th>
+            <th scope="col">photo</th>
+            <th scope="col">id_team</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td>{{repo.id}}</td>
+            <td>{{repo.team}}</td>
+            <td>{{repo.team}}</td>
+            <td>{{repo.id_team}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Reporte Numero 5 -->
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Reporte 5 : Equipos de X país
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Ciudad</mat-label>
+              <mat-select  [(ngModel)]="idCountry">
+                <mat-option *ngFor="let ciudad of paises" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte5()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(5)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="showRepo5" id="pdfTable5" #pdfTable5>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">id_country</th>
+            <th scope="col">id_team</th>
+            <th scope="col">photo</th>
+            <th scope="col">team</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td>{{repo.id_country}}</td>
+            <td>{{repo.id_team}}</td>
+            <td>{{repo.id_team}}</td>
+            <td>{{repo.team}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Reporte Numero 6 -->
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Reporte 6: Equipos con X años de antigüedad
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label id="inputmat1">Edad</mat-label>
+              <input matInput [(ngModel)]="age" id="inputmat" name="title" placeholder="Ingrese Edad"
+                     required>
+            </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte6()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(6)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="showRepo6" id="pdfTable6" #pdfTable6>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">id_team</th>
+            <th scope="col">team</th>
+            <th scope="col">photo</th>
+            <th scope="col">id_country</th>
+            <th scope="col">foundation_date</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td>{{repo.id_team}}</td>
+            <td>{{repo.team}}</td>
+            <td>{{repo.team}}</td>
+            <td>{{repo.id_country}}</td>
+            <td>{{repo.foundation_date}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Reporte Numero 7 -->
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Reporte 7: Estadios en X país
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Ciudad</mat-label>
+            <mat-select  [(ngModel)]="idCountry">
+              <mat-option *ngFor="let ciudad of paises" [value]="ciudad.id" >
+                {{ciudad.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte7()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(7)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="showRepo7" id="pdfTable7" #pdfTable7>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">id_country</th>
+            <th scope="col">id_stadium</th>
+            <th scope="col">photo</th>
+            <th scope="col">stadium</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td>{{repo.id_country}}</td>
+            <td>{{repo.id_stadium}}</td>
+            <td>{{repo.id_stadium}}</td>
+            <td>{{repo.id_stadium}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Reporte Numero 8 -->
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Reporte 8 : Estadios con capacidad menor o igual a X
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label id="inputmat1">Capacity</mat-label>
+              <input matInput [(ngModel)]="capacity" id="inputmat" name="title" placeholder="Ingrese capacidad"
+                     required>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte8()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(8)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="showRepo8" id="pdfTable8" #pdfTable8>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">id_country</th>
+            <th scope="col">id_stadium</th>
+            <th scope="col">photo</th>
+            <th scope="col">stadium</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td>{{repo.id_country}}</td>
+            <td>{{repo.id_stadium}}</td>
+            <td>{{repo.id_stadium}}</td>
+            <td>{{repo.id_stadium}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Reporte Numero 9 -->
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Reporte 9 : Histórico de partidos de X equipo
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Equipo</mat-label>
+              <mat-select  [(ngModel)]="id_team">
+                <mat-option *ngFor="let ciudad of equipos" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte9()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(9)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="showRepo9" id="pdfTable9" #pdfTable9>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">attendees</th>
+            <th scope="col">competition</th>
+            <th scope="col">game_date</th>
+            <th scope="col">id</th>
+            <th scope="col">idStadium</th>
+            <th scope="col">id_competition</th>
+            <th scope="col">id_team_local</th>
+            <th scope="col">id_team_visiting</th>
+            <th scope="col">result_local</th>
+            <th scope="col">result_visiting</th>
+            <th scope="col">stadium</th>
+            <th scope="col">status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td >{{repo.attendees}}</td>
+            <td >{{repo.competition}}</td>
+            <td >{{repo.game_date}}</td>
+            <td >{{repo.id}}</td>
+            <td >{{repo.idStadium}}</td>
+            <td >{{repo.id_competition}}</td>
+            <td >{{repo.id_team_local}}</td>
+            <td >{{repo.id_team_visiting}}</td>
+            <td >{{repo.result_local}}</td>
+            <td >{{repo.result_visiting}}</td>
+            <td >{{repo.stadium}}</td>
+            <td >{{repo.status}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Reporte Numero 11 -->
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Reporte 11 : Partidos donde hubo al menos X goles
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label id="inputmat1">Goal</mat-label>
+              <input matInput [(ngModel)]="goals" id="inputmat" name="title" placeholder="Ingrese Goals"
+                     required>
+            </mat-form-field>
+          </mat-grid-tile>
+
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte11()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(11)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="showRepo11" id="pdfTable11" #pdfTable11>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">attendees</th>
+            <th scope="col">competition</th>
+            <th scope="col">game_date</th>
+            <th scope="col">id</th>
+            <th scope="col">idStadium</th>
+            <th scope="col">id_competition</th>
+            <th scope="col">id_team_local</th>
+            <th scope="col">id_team_visiting</th>
+            <th scope="col">result_local</th>
+            <th scope="col">result_visiting</th>
+            <th scope="col">stadium</th>
+            <th scope="col">status</th>
+            <th scope="col">goles</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td >{{repo.attendees}}</td>
+            <td >{{repo.competition}}</td>
+            <td >{{repo.game_date}}</td>
+            <td >{{repo.id}}</td>
+            <td >{{repo.idStadium}}</td>
+            <td >{{repo.id_competition}}</td>
+            <td >{{repo.id_team_local}}</td>
+            <td >{{repo.id_team_visiting}}</td>
+            <td >{{repo.result_local}}</td>
+            <td >{{repo.result_visiting}}</td>
+            <td >{{repo.stadium}}</td>
+            <td >{{repo.status}}</td>
+            <td >{{repo.goles}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Reporte Numero 12 -->
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Reporte 12: Jugadores con más X incidencias en Y competición
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label id="inputmat1">Incidencias</mat-label>
+              <input matInput [(ngModel)]="age" id="inputmat" name="title" placeholder="Ingrese Goals"
+                     required>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Competicion</mat-label>
+              <mat-select  [(ngModel)]="idcompetition">
+                <mat-option *ngFor="let ciudad of competiciones" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label id="inputmat1">Cuantity</mat-label>
+              <input matInput [(ngModel)]="age" id="inputmat" name="title" placeholder="Ingrese Goals"
+                     required>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte12()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(12)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="showRepo12" id="pdfTable12" #pdfTable12>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">id</th>
+            <th scope="col">lastname</th>
+            <th scope="col">name</th>
+            <th scope="col">nationality</th>
+            <th scope="col">photo</th>
+            <th scope="col">position</th>
+            <th scope="col">total</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td>{{repo.id}}</td>
+            <td>{{repo.lastname}}</td>
+            <td>{{repo.name}}</td>
+            <td>{{repo.nationality}}</td>
+            <td>{{repo.nationality}}</td>
+            <td>{{repo.position}}</td>
+            <td>{{repo.total}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Reporte Numero 13 -->
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Reporte 13: Jugadores con más X incidencias y Y competiciones de Z año
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label id="inputmat1">Incidencias</mat-label>
+              <input matInput [(ngModel)]="age" id="inputmat" name="title" placeholder="Ingrese Goals"
+                     required>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label id="inputmat1">Year</mat-label>
+              <input matInput [(ngModel)]="year" id="inputmat" name="title" placeholder="Ingrese year"
+                     required>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label id="inputmat1">Cuantity</mat-label>
+              <input matInput [(ngModel)]="age" id="inputmat" name="title" placeholder="Ingrese Goals"
+                     required>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte13()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(13)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="showRepo13" id="pdfTable13" #pdfTable13>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Equipo</th>
+            <th scope="col">IdUsuario</th>
+            <th scope="col">Apellido</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td>{{repo.id}}</td>
+            <td>{{repo.lastname}}</td>
+            <td>{{repo.name}}</td>
+            <td>{{repo.nationality}}</td>
+            <td>{{repo.nationality}}</td>
+            <td>{{repo.position}}</td>
+            <td>{{repo.count}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Reporte Numero 14 -->
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Reporte 14: Cantidad de X competiciones que ha ganado Y equipo
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Equipo</mat-label>
+              <mat-select  [(ngModel)]="id_team">
+                <mat-option *ngFor="let ciudad of equipos" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte14()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(14)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="showRepo14" id="pdfTable14" #pdfTable14>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Equipo</th>
+            <th scope="col">IdUsuario</th>
+            <th scope="col">Apellido</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td>{{repo.name}}</td>
+            <td>{{repo.equipo}}</td>
+            <td>{{repo.id_user}}</td>
+            <td>{{repo.lastname}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Reporte Numero 15 -->
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Reporte 15: Listado de partidos en X año
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label id="inputmat1">Year</mat-label>
+              <input matInput [(ngModel)]="year" id="inputmat" name="title" placeholder="Ingrese year"
+                     required>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte15()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(15)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="showRepo15" id="pdfTable15" #pdfTable15>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">attendees</th>
+            <th scope="col">competition</th>
+            <th scope="col">game_date</th>
+            <th scope="col">id</th>
+            <th scope="col">idStadium</th>
+            <th scope="col">id_competition</th>
+            <th scope="col">id_team_local</th>
+            <th scope="col">id_team_visiting</th>
+            <th scope="col">result_local</th>
+            <th scope="col">result_visiting</th>
+            <th scope="col">stadium</th>
+            <th scope="col">status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td >{{repo.attendees}}</td>
+            <td >{{repo.competition}}</td>
+            <td >{{repo.game_date}}</td>
+            <td >{{repo.id}}</td>
+            <td >{{repo.idStadium}}</td>
+            <td >{{repo.id_competition}}</td>
+            <td >{{repo.id_team_local}}</td>
+            <td >{{repo.id_team_visiting}}</td>
+            <td >{{repo.result_local}}</td>
+            <td >{{repo.result_visiting}}</td>
+            <td >{{repo.stadium}}</td>
+            <td >{{repo.status}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Reporte Numero 16 -->
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Reporte 16: Listado de partidos entre X equipo contra Y equipo
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Equipo</mat-label>
+              <mat-select  [(ngModel)]="id_team">
+                <mat-option *ngFor="let ciudad of equipos" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Equipo Openente</mat-label>
+              <mat-select  [(ngModel)]="idTeam2">
+                <mat-option *ngFor="let ciudad of equipos" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte16()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(16)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="showRepo16" id="pdfTable16" #pdfTable16>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">attendees</th>
+            <th scope="col">competition</th>
+            <th scope="col">game_date</th>
+            <th scope="col">id</th>
+            <th scope="col">idStadium</th>
+            <th scope="col">id_competition</th>
+            <th scope="col">id_team_local</th>
+            <th scope="col">id_team_visiting</th>
+            <th scope="col">result_local</th>
+            <th scope="col">result_visiting</th>
+            <th scope="col">stadium</th>
+            <th scope="col">status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td >{{repo.attendees}}</td>
+            <td >{{repo.competition}}</td>
+            <td >{{repo.game_date}}</td>
+            <td >{{repo.id}}</td>
+            <td >{{repo.idStadium}}</td>
+            <td >{{repo.id_competition}}</td>
+            <td >{{repo.id_team_local}}</td>
+            <td >{{repo.id_team_visiting}}</td>
+            <td >{{repo.result_local}}</td>
+            <td >{{repo.result_visiting}}</td>
+            <td >{{repo.stadium}}</td>
+            <td >{{repo.status}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Reporte Numero 17 -->
+<div class="contenedor">
+  <div class="example-container">
+    <div class="contenedor">
+      <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+          <h1 id="textalig">
+            Reporte 17: Listado de partidos de X equipo
+          </h1>
+        </mat-card>
+        <br>
+        <mat-grid-list id="tables" cols="2" rowHeight="4rem">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Equipo</mat-label>
+              <mat-select  [(ngModel)]="id_team">
+                <mat-option *ngFor="let ciudad of equipos" [value]="ciudad.id" >
+                  {{ciudad.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <br>
+        <button mat-raised-button (click)="Reporte17()" id="espacio" color="primary"
+                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <mat-icon>edit</mat-icon>GenerarReporte
+        </button>
+        <br><br>
+        <button class="btn btn-primary" (click)="downloadAsPDF(17)">Generar PDF</button>
+      </mat-card>
+      <div *ngIf="showRepo17" id="pdfTable17" #pdfTable17>
+        <table class="table table-striped table-dark">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">attendees</th>
+            <th scope="col">competition</th>
+            <th scope="col">game_date</th>
+            <th scope="col">id</th>
+            <th scope="col">idStadium</th>
+            <th scope="col">id_competition</th>
+            <th scope="col">id_team_local</th>
+            <th scope="col">id_team_visiting</th>
+            <th scope="col">result_local</th>
+            <th scope="col">result_visiting</th>
+            <th scope="col">stadium</th>
+            <th scope="col">status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let repo of data;let indexOfelement=index;">
+            <td>{{indexOfelement + 1}}</td>
+            <td >{{repo.attendees}}</td>
+            <td >{{repo.competition}}</td>
+            <td >{{repo.game_date}}</td>
+            <td >{{repo.id}}</td>
+            <td >{{repo.idStadium}}</td>
+            <td >{{repo.id_competition}}</td>
+            <td >{{repo.id_team_local}}</td>
+            <td >{{repo.id_team_visiting}}</td>
+            <td >{{repo.result_local}}</td>
+            <td >{{repo.result_visiting}}</td>
+            <td >{{repo.stadium}}</td>
+            <td >{{repo.status}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

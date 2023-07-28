@@ -1,0 +1,103 @@
+#tabs {
+    margin-top: 1.5%;
+    width: 90%;
+    margin-left: 5%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.445) 0%, rgba(0, 0, 0, 0.486) 40%, rgba(0, 0, 0, 0.445) 100%);
+    background-position: 50% 50%;
+    color: aliceblue;
+}
+
+
+#matab {
+    height: 100%;
+}
+
+#textalig{
+    font-size: 20px;
+}
+
+#box{
+    text-align: center;
+}
+.contenedor {
+    border: transparent;
+    height: 80%;
+    width:100%;
+    background: transparent;
+    overflow:auto;
+    box-sizing: border-box;
+    padding:0 1rem;
+}
+
+/* Estilos para motores Webkit y blink (Chrome, Safari, Opera... )*/
+
+.contenedor::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.contenedor::-webkit-scrollbar:vertical {
+    width:10px;
+}
+
+.contenedor::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    display: none;
+} 
+
+.contenedor::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.contenedor::-webkit-scrollbar-thumb {
+    background-color: #383838;
+    border-radius: 20px;
+    border: 1px solid #f1f2f3;
+}
+
+.contenedor::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
+
+.example-full-width{
+    margin-left: 10%;
+    width: 80%;
+}
+
+.example-small-box, .example-large-box {
+    justify-content: center;
+    padding: 16px;
+    border-radius: 8px;
+  }
+  
+  
+  .example-large-box {
+    height: 520px;
+    margin-left: 0.5%;
+    width: 99%;
+  }
+
+  table {
+    width: 98%;
+    margin-top: 1%;
+    margin-left: 1%;
+    align-items: center;
+    align-content: center;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.445) 0%,rgba(0, 0, 0, 0.486) 40%,rgba(0, 0, 0, 0.445) 100%);
+    background-position: 50% 50%;
+  }
+
+  #imgRedonda {
+    width:40px;
+    height:40px;
+    border-radius:150px;
+    margin-right: -0.6%;
+  }
+
+  #toggle{
+    margin-right: -7%;
+    margin-left: 3%;
+  }
+
+  #busca{
+    margin-left: 10%;
+    width: 60%;
+}

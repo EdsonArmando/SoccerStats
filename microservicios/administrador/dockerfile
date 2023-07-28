@@ -1,0 +1,9 @@
+FROM node:14 as build
+WORKDIR /usr/local/app
+COPY administrador/package*.json ./ 
+ENV PORT=5002
+RUN npm install
+COPY administrador/ administrador/
+COPY database/  database/
+EXPOSE 5002
+CMD ["node", "administrador/index.js"]

@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "admin",
+    "password": "softwareavanzado",
+    "database": "soccerstats",
+    "host": "soccerstats.clhldirk17aw.us-east-2.rds.amazonaws.com",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "admin",
+    "password": "softwareavanzado",
+    "database": "soccerstats",
+    "host": "soccerstats.clhldirk17aw.us-east-2.rds.amazonaws.com",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "admin",
+    "password": "softwareavanzado",
+    "database": "soccerstats",
+    "host": "soccerstats.clhldirk17aw.us-east-2.rds.amazonaws.com",
+    "dialect": "mysql"
+  }
+}

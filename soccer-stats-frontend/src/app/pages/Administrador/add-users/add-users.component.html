@@ -1,0 +1,109 @@
+<div class="contenedor">
+    <mat-card id="card1" fxFlex="200%" fxFlex.sm="100%">
+        <mat-card width="100%" id="card">
+            <h1 id="textalig">
+                <mat-icon id="btn2"></mat-icon> Registro
+            </h1>
+        </mat-card>
+        <mat-grid-list id="gridcolor" cols="2" rowHeight="10rem">
+            <br>
+
+            
+            <img id='imgRedonda' style="object-fit:cover" [src]="photoSelected || 'assets/sinFoto.png'"
+                 class="img-fluid" alt="no image" width="250" height="250">
+
+
+        </mat-grid-list>
+        <br>
+        <br><br><br>
+        <mat-grid-list id="tables" cols="2" rowHeight="7rem">
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label id="inputmat1">Nombre</mat-label>
+                    <input matInput [(ngModel)]="nombre" id="inputmat" name="nombre" placeholder="Ingrese su nombre"
+                        required>
+                    <mat-error *ngIf="firstname.invalid">{{getErrorMessageother()}}</mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label id="inputmat1">Apellido</mat-label>
+                    <input matInput [(ngModel)]="apellido" id="inputmat" name="apellido"
+                        placeholder="Ingrese su apellido" required>
+                    <mat-error *ngIf="lastname.invalid">{{getErrorMessageother()}}</mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label id="inputmat1">Teléfono</mat-label>
+                    <input id="inputmat" matInput [(ngModel)]="phone" name="phone" placeholder="Ingrese su teléfono"
+                        required>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label id="inputmat1">Correo electrónico</mat-label>
+                    <input id="inputmat" matInput [(ngModel)]="correo" name="correo" placeholder="example@example.com"
+                        required>
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label id="inputmat1">Fecha de nacimiento</mat-label>
+                    <input matInput [matDatepicker]="datepicker" [(ngModel)]="nacimiento">
+                    <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #datepicker>
+                        <mat-datepicker-actions>
+                            <button mat-button matDatepickerCancel>Cancel</button>
+                            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                        </mat-datepicker-actions>
+                    </mat-datepicker>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label id="inputmat1">Género</mat-label>
+                    <mat-select [(value)]="selected2">
+                        <mat-option *ngFor="let food of gender" [value]="food.value">
+                            {{food.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label id="inputmat1">País</mat-label>
+                    <mat-select [(value)]="selected3">
+                        <mat-option *ngFor="let food of country" [value]="food.nicename">
+                            {{food.nicename}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label id="inputmat1">Rol</mat-label>
+                    <mat-select [(value)]="selectrol">
+                        <mat-option *ngFor="let food of Rol" [value]="food.value">
+                            {{food.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </mat-grid-tile>
+
+        </mat-grid-list>
+
+        <br>
+        <button mat-raised-button (click)="Register()" id="espacio" color="primary"
+            class="btn btn-outline-success my-2 my-sm-0" type="submit" >
+            REGISTRARSE
+           
+        </button>
+
+
+
+    </mat-card>
+</div>
